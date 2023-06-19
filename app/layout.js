@@ -15,8 +15,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "#1A202C", // Replace with your desired background color
-       
+        //bg: "#1A202C", // Replace with your desired background color
+       bg:"black"
       },
       fonts:{
         body:`'Roboto Condensed',sans-serif`,

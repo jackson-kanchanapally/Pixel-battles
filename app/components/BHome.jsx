@@ -19,7 +19,7 @@ const BHome = () => {
     <Flex flexDirection={"row"} justify="center" align="center" wrap="wrap" mt='20'>
      
       <Flex
-        bg="gray.900"
+        
         boxShadow="dark-lg"
         rounded="lg"
         _hover={{
@@ -39,7 +39,7 @@ const BHome = () => {
 
       <Flex
         ml={["0", "0", "50px", "60px"]}
-        bg="gray.900"
+        
         width="320px"
         h="400px"
         boxShadow="dark-lg"
