@@ -8,11 +8,11 @@ const BHome = () => {
     <Box >
       <Hero/>
     <Text fontSize='3xl' width='70' align='center'  mt='10' >
-"Drive and compute against the best players in thrilling tournament
+    &quot;Drive and compute against the best players in thrilling tournament
 </Text>
 <Text fontSize='3xl' align='start' ml='22%'>
  put your skills to earn real  
- <Text as='mark'ml='2'>cash prizes</Text>."
+ cash prizes&quot;
  </Text>
   </Box>
  
