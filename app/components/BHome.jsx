@@ -10,7 +10,7 @@ const BHome = () => {
     <Text fontSize='3xl' width='70' align='center'  mt='10' >
     &quot;Drive and compute against the best players in thrilling tournament
 </Text>
-<Text fontSize='3xl' align='start' ml='22%'>
+<Text fontSize='3xl' color='gray.200' align='start' ml='22%'>
  put your skills to earn real  
  cash prizes&quot;
  </Text>
