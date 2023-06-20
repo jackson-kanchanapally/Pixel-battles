@@ -1,13 +1,14 @@
 "use client";
 import { Flex, Box, Image ,Text} from "@chakra-ui/react";
-import Hero from "./Hero";
+
+import BHero from "./BHero";
 
 const BHome = () => {
   return (
     <>
-    <Box >
-      <Hero/>
-    <Text fontSize='3xl' width='70' align='center'  mt='10' >
+    {/* <Box > */}
+      <BHero/>
+    {/* <Text fontSize='3xl' width='70' align='center'  mt='10' >
     &quot;Drive and compute against the best players in thrilling tournament
 </Text>
 <Text fontSize='3xl' color='gray.200' align='start' ml='22%'>
@@ -55,7 +56,7 @@ const BHome = () => {
         <Image src={"ff.jpg"} alt={"freefire"} borderRadius='15px'  width={["90%","320px","320px","320px"]}
         h={["90%","400px"]}/>
       </Flex>
-    </Flex>
+    </Flex> */}
     
     </>
   );

@@ -1,13 +1,12 @@
 'use client'
-
-import BHome from './components/BHome'
-import Nav from './components/Nav'
-
+import { Box, Stack } from '@chakra-ui/react'
+import BxHome from './components/BxHome'
+import GameSec from './components/GameSec'
 export default function Home() {
   return (
     <>
-    <Nav/>
-      <BHome/>
+      <BxHome/>
+
     </>
   )
 }
