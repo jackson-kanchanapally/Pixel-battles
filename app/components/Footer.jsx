@@ -1,8 +1,16 @@
 import React from "react";
 import { FaTwitter, FaFacebook, FaTelegram } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
-
-import { Box, Flex, Divider, Text,HStack, Image } from "@chakra-ui/react";
+import Link from "next/link";
+import {
+  Box,
+  Flex,
+  Divider,
+  Text,
+  HStack,
+  Image,
+  IconButton,
+} from "@chakra-ui/react";
 export default function Footer() {
   return (
     <Box>
@@ -56,14 +64,23 @@ export default function Footer() {
         </Box>
       </Flex>
       <Divider orientation="horizontal" color="white" width="70%" m="auto" />
-      <Flex m='20px'  alignItems='center' direction='column'>
-
-      <HStack><Image src='as.jpg' width='250px' alt='pixel battles' mb='10px'/></HStack>
-        <HStack  spacing='15px' fontSize='30px' mb='30px'>
-        <FaTwitter />
-        <RiInstagramFill />
-        <FaFacebook />
-        <FaTelegram />
+      <Flex m="20px" alignItems="center" direction="column">
+        <HStack>
+          <Image src="as.jpg" width="250px" alt="pixel battles" mb="10px" />
+        </HStack>
+        <HStack spacing="15px" fontSize="30px" mb="30px">
+          <Link href="#" target="_blank">
+            <IconButton size="30px" bg="none" icon={<FaTwitter />} />
+          </Link>
+          <Link href="https://www.instagram.com/pixelbattles2023/" target="_blank">
+            <IconButton size="30px" bg="none" icon={<RiInstagramFill />} />
+          </Link>
+          <Link href="#" target="_blank">
+            <IconButton size="30px" bg="none" icon={<FaFacebook />} />
+          </Link>
+          <Link href="#" target="_blank">
+            <IconButton size="30px" bg="none" icon={<FaTelegram />} />
+          </Link>
         </HStack>
       </Flex>
     </Box>
