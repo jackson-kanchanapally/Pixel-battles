@@ -64,22 +64,22 @@ export default function Footer() {
         </Box>
       </Flex>
       <Divider orientation="horizontal" color="white" width="70%" m="auto" />
-      <Flex m="20px" alignItems="center" direction="column" color='white'>
+      <Flex m="20px" alignItems="center" direction="column" >
         <HStack>
           <Image src="as.jpg" width="250px" alt="pixel battles" mb="10px" />
         </HStack>
-        <HStack spacing="15px" fontSize="30px" mb="30px">
-          <Link href="#" target="_blank">
-            <IconButton size="30px" bg="none" icon={<FaTwitter />} />
+        <HStack spacing="15px" fontSize="30px" mb="30px" >
+          <Link href="#" target="_blank" >
+            <IconButton size="30px" bg="none" icon={<FaTwitter />} color='white'/>
           </Link>
           <Link href="https://www.instagram.com/pixelbattles2023/" target="_blank">
-            <IconButton size="30px" bg="none" icon={<RiInstagramFill />} />
+            <IconButton size="30px" bg="none" icon={<RiInstagramFill />} color='white'/>
           </Link>
           <Link href="#" target="_blank">
-            <IconButton size="30px" bg="none" icon={<FaFacebook />} />
+            <IconButton size="30px" bg="none" icon={<FaFacebook />} color='white'/>
           </Link>
           <Link href="#" target="_blank">
-            <IconButton size="30px" bg="none" icon={<FaTelegram />} />
+            <IconButton size="30px" bg="none" icon={<FaTelegram />} color='white'/>
           </Link>
         </HStack>
       </Flex>
