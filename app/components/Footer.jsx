@@ -64,7 +64,7 @@ export default function Footer() {
         </Box>
       </Flex>
       <Divider orientation="horizontal" color="white" width="70%" m="auto" />
-      <Flex m="20px" alignItems="center" direction="column">
+      <Flex m="20px" alignItems="center" direction="column" color='white'>
         <HStack>
           <Image src="as.jpg" width="250px" alt="pixel battles" mb="10px" />
         </HStack>
