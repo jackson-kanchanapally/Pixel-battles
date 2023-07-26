@@ -23,9 +23,9 @@ export default function Quc() {
         <Box color="#cdb206" fontSize={["25", "30", "35", "35"]}>
           <h1 className={oswald.className}>Quick and Easy Setup</h1>
         </Box>
-        <Box display={['block','none']} pt='35px'>
+        {/* <Box display={['block','none']} pt='35px'>
         <Image src="qe.png" alt="wr" width="100vw" />
-      </Box>
+      </Box> */}
    <Box color="gray.300" width={["100%", "100%"]} mt="10" pos="relative">
           <Box>
             <Text as="b" fontSize={["20px"]}>
@@ -48,9 +48,9 @@ export default function Quc() {
       </Box>
 
       <Spacer />
-      <Box pl="40" display={['none','block']}>
+      {/* <Box pl="40" display={['none','block']}>
         <Image src="qe.png" alt="wr" width="800px" />
-      </Box>
+      </Box> */}
       </HStack>
   
     </Stack>
