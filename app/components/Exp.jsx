@@ -16,7 +16,7 @@ export default function Exp() {
           </h1>
         </Box>
         <Box
-          fontSize={["17", "22", "28", "28"]}
+          fontSize={["17", "22", "25", "25"]}
           color="gray.300"
           width={["100%", "100%"]}
           mt="10"
@@ -25,7 +25,7 @@ export default function Exp() {
           <p className={oswald.className}>
             PixelBattles brings you an intense gaming platform, featuring the
             best of BGMI and Free Fire tournaments. Compete for cash prizes and
-            prove you're the ultimate champion in the world of esports.
+            prove you&apos;re the ultimate champion in the world of esports.
           </p>
         </Box>
       </Box>

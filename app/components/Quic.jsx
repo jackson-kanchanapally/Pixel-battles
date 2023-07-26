@@ -35,7 +35,7 @@ export default function Quc() {
               Join with minimal bucks and earn maximum.{" "}
             </Text>
           </Box>
-          <Box pt={["20px"]} width={["75%"]}>
+          <Box pt={["20px"]} width={["75%","100%"]}>
             <Text as="b" fontSize={["20px"]}>
               2. Go Play!
             </Text>
