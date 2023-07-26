@@ -26,6 +26,7 @@ export default function BxHome() {
           fontSize={["30", "30", "52", "52"]}
           fontWeight={"bold"}
           width='70%'
+          color='white'
         >
           <div className={oswald.className}>
             <p>Welcome to PixelBattles, Your Ultimate</p>
