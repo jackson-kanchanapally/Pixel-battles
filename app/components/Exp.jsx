@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Flex, Text, Button, Spacer } from "@chakra-ui/react";
+import React from "react";
+import { Box, Flex, Text, Button, Spacer, HStack, Image } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 import GameSec from "./GameSec";
 const oswald = Oswald({
@@ -8,21 +8,32 @@ const oswald = Oswald({
 });
 export default function Exp() {
   return (
-    
-       
-    <Flex justify='center' mx='270px'  >
-    <Box>
-      <Box color="#fbe23d" fontSize='35' mt='50px'>
-        <h1 className={oswald.className}>Experience Adrenaline-Fueled Action</h1>
+    <HStack width={['100%',"100%"]} px={["4%", "270px"]} my={["15%", "5%"]}>
+      <Box width={['100%','70%']}>
+        <Box color="#cdb206" fontSize={["25", "30", "35", "35"]} >
+          <h1 className={oswald.className}>
+            Experience Adrenaline-Fueled Action
+          </h1>
+        </Box>
+        <Box
+          fontSize={["17", "22", "28", "28"]}
+          color="gray.300"
+          width={["100%", "100%"]}
+          mt="10"
+          pos="relative"
+        >
+          <p className={oswald.className}>
+            PixelBattles brings you an intense gaming platform, featuring the
+            best of BGMI and Free Fire tournaments. Compete for cash prizes and
+            prove you're the ultimate champion in the world of esports.
+          </p>
+        </Box>
       </Box>
-      <Box fontSize='28' color='gray.300' width='700px' mt='10'>
-        <p className={oswald.className}>
-        PixelBattles brings you an intense gaming platform, featuring the best of BGMI and Free Fire tournaments. Compete for cash prizes and prove you're the ultimate champion in the world of esports.
-        </p>
+
+      <Spacer />
+      <Box display={["none", "block"]} pt="50px" width="600px" pl='40'>
+        <Image src='exp.png' alt='exp'/>
       </Box>
-    </Box>
-    <Spacer/>
-    <Box mt='50px'>asdgfsddadg</Box>
-  </Flex>
-  )
+    </HStack>
+  );
 }
