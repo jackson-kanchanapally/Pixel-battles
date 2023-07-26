@@ -7,10 +7,10 @@ const oswald = Oswald({
 });
 export default function GameSec() {
   return (
-    <Flex bgColor="white" justify="center" width="100vw" h="100%">
+    <Flex bgColor="white" justify="center" width="100vw" h="100%" >
       <Flex m={["5", "10"]} flexDirection={["column",'column','row','row']}>
         <Box>
-          <Box mt="10px" mb='15px' display={['block','none']}>
+          <Box mt="10px" mb='15px' display={['block','none']} ml={['30px','0']}>
             <Box fontSize="25" color="#cdb206">
               <h1 className={oswald.className}>BGMI</h1>
             </Box>
@@ -34,9 +34,11 @@ export default function GameSec() {
             height={["", "65vh"]}
             borderRadius="30px"
             filter="grayscale(100%)"
-            width={["98%", "95%", "95%", "480px", "480px"]}
+
+            m={['auto','0']}
+            width={["85%", "85%", "95%", "480px", "480px"]}
           />
-          <Box mt="35px"  display={['none','block']}>
+          <Box mt="35px"  display={['none','block']} > 
             <Box fontSize="25" color="#cdb206" >
               <h1 className={oswald.className}>BGMI</h1>
             </Box>
@@ -62,10 +64,11 @@ export default function GameSec() {
             height={["", "65vh"]}
             borderRadius="30px"
             filter="grayscale(100%)"
-            width={["98%", "95%", "95%", "480px", "480px"]}
+            m={['auto','0']}
+            width={["85%", "85%", "95%", "480px", "480px"]}
           />
-          <Box mt="35px">
-            <Box fontSize="25" color="#cdb206">
+          <Box mt="35px" ml={['30px','0']}>
+            <Box fontSize="25" color="#cdb206" >
               <h1 className={oswald.className}>FREEFIRE</h1>
             </Box>
             <Box
