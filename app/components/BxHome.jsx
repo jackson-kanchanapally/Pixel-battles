@@ -51,7 +51,7 @@ export default function BxHome() {
         <Exp/>
         <Tab/>
         <Quc/>
-       <Pp/>
+       {/* <Pp/> */}
       <Footer/>
       </Box>
     </Flex>
