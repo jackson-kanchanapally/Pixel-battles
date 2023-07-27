@@ -38,7 +38,7 @@ export default function MatchPubg({
       m="auto"
       mt='10px'
       py="25px"
-      w='98%'
+      w='100%'
       boxShadow="lg"
       borderRadius="15px"
       direction="column"
