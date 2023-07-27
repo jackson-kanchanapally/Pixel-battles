@@ -27,10 +27,10 @@ export default function Pubg() {
       ["width", "height", "src", "alt"].includes(prop),
   });
   return (
-    <Stack h="100vh" overflowX="hidden">
+    <Stack h={["100vh","100vh"]} overflowX="hidden">
       <Img
         src={isLargerThan800 ? bgimg : bgimg2}
-        height="100%"
+        height="100vh"
         alt="bg"
         width="100vw"
         filter="opacity(40%)"

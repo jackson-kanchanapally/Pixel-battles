@@ -33,7 +33,7 @@ export default function MatchPubg({
   return (
     <Flex
       px="20px"
-      bg="rgba(0, 0, 0, 0.70)"
+      bg="rgba(0, 0, 0, 0.50)"
       h={["300px","290px"]}
       m="auto"
       mt='10px'
@@ -109,6 +109,7 @@ export default function MatchPubg({
         <Progress
           colorScheme="yellow"
           borderRadius="10px"
+          bg='gray.800'
           value={80}
         />
         <Flex py='10px' color="gray.400" >SPOTS LEFT : &nbsp;<Text color='yellow.400'>{spots}</Text></Flex>
