@@ -47,7 +47,7 @@ export default function MatchPubg({
         <Img
           src={image}
           alt={alt}
-          width={['85px',"120"]}
+          width={['85px',"120px"]}
           borderRadius="10px"
           ml={["", "-10"]}
         />
@@ -67,12 +67,12 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height={["62px","80px"]}
-          pt={["17px","13px"]}
+          pt={["17px","15px"]}
+          fontSize={['11px','14px']}
           width={["80px","130px"]}
           borderRadius="10px"
           align="center"
           
-          fontSize={['11px']}
           color='white'
         >
           PRIZE POOL :
@@ -82,12 +82,12 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height={["62px","80px"]}
-          pt={["17px","13px"]}
+          pt={["17px","15px"]}
+          fontSize={['11px','14px']}
           width={["80px","130px"]}
           borderRadius="10px"
           align="center"
          
-          fontSize={['11px']}
           color='white'
         >
           PLATFORM :
@@ -97,11 +97,12 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height={["62px","80px"]}
-          pt={["17px","13px"]}
+          pt={["17px","15px"]}
+          fontSize={['11px','14px']}
           width={["80px","130px"]}
           borderRadius="10px"
           align="center"
-          fontSize={['11px']}
+          
           color='white'
         >
           ENTRY FEE :
