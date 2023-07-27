@@ -81,17 +81,17 @@ export default function Pubg() {
                 w="200px"
                 borderLeftRadius="10px"
                 
-                _selected={{ color: "yellow.400" }}
+                _selected={{ color: "yellow" }}
               >
                 SOLO
               </Tab>
-              <Tab w="200px" _selected={{ color: "yellow.400" }}>
+              <Tab w="200px" _selected={{ color: "yellow" }}>
                 SQUAD
               </Tab>
               <Tab
                 w="200px"
                 borderRightRadius="10px"
-                _selected={{ color: "yellow.400" }}
+                _selected={{ color: "yellow" }}
               >
                 TDM
               </Tab>
