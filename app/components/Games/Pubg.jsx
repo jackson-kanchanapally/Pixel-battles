@@ -35,7 +35,7 @@ export default function Pubg() {
         width="100vw"
         filter="opacity(40%)"
         position="absolute"
-        opacity="30%"
+        opacity={["90%",'70%']}
       />
       <Flex
         justifyContent="center"
