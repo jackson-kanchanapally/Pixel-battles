@@ -56,7 +56,7 @@ export default function MatchPubg({
             {matchName.toUpperCase()}
           </Text>
           <Box color="gray.400">
-            <Text align="center" fontSize={["12px", "15px"]}>
+            <Text align="center" fontSize={["9.5px", "15px"]}>
               MAP : {mapName.toUpperCase()} &nbsp; &nbsp;|&nbsp;&nbsp; TIME :{" "}
               {time}
             </Text>
