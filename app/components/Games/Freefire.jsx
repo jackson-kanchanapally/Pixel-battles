@@ -11,18 +11,14 @@ import {
   Tab,
   TabPanel,
   useMediaQuery,
-  Button,
 } from "@chakra-ui/react";
-import Link from  'next/link'
 import Image from "next/image";
-import bgimg from "@/public/pubgback.jpg";
-import bgimg2 from "@/public/pubgback2.jpg";
-import pubg1 from "@/public/pubg1.jpg";
-import pubgsqd from "@/public/pubgsqd.jpg";
-import pubgsolo from "@/public/pubgsoloo.jpg";
-import pubgstdm from "@/public/pubgtdm.jpg";
+import bgimg from "@/public/ffbgpx.jpg";
+import bgimg2 from "@/public/ffbg.jpg";
+import ffsolo from "@/public/ffsolo.jpg";
+import ff from "@/public/ff.jpg";
 import MatchPubg from "./MatchPubg";
-export default function Pubg() {
+export default function Freefire() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
@@ -39,8 +35,6 @@ export default function Pubg() {
         position="absolute"
         opacity={["90%", "70%"]}
       />
-
-      <Link href='/'><Button left='10px' top={['25px','10px']} color='white' opacity='70%' bg='black' w='100px' pos='relative'>Back</Button></Link>
       <Flex
         justifyContent="center"
         alignContent="center"
@@ -63,10 +57,10 @@ export default function Pubg() {
             <HStack ml={["25px", "0px"]}>
               {" "}
               <Img
-                src={pubg1}
-                height={["50px", "70px"]}
+                src={ff}
+                height={["60px", "70px"]}
                 alt="bg"
-                width={["50px", "70px"]}
+                width={["60px", "70px"]}
                 borderRadius="10px"
                 position="absolute"
                 ml={["15px", "80px"]}
@@ -75,10 +69,10 @@ export default function Pubg() {
                 m="auto"
                 color="white"
                 py="40px"
-                pl={["38px", ""]}
-                fontSize={["13px", "18px"]}
+               
+                fontSize={["16px", "18px"]}
               >
-                BATTLEGROUNDS MOBILE INDIA
+                FREE FIRE
               </Text>
             </HStack>
             <TabList
@@ -88,28 +82,21 @@ export default function Pubg() {
               color="white"
             >
               <Tab
-                w="200px"
+                w="300px"
                 borderLeftRadius="10px"
                 _selected={{ color: "yellow.400" }}
               >
                 SOLO
               </Tab>
-              <Tab w="200px" _selected={{ color: "yellow.400" }}>
+              <Tab w="300px" _selected={{ color: "yellow.400" }}>
                 SQUAD
-              </Tab>
-              <Tab
-                w="200px"
-                borderRightRadius="10px"
-                _selected={{ color: "yellow.400" }}
-              >
-                TDM
               </Tab>
             </TabList>
           </Flex>
           <TabPanels>
             <TabPanel>
               <MatchPubg
-                image={pubgsolo}
+                image={ffsolo}
                 alt="hello"
                 matchName="Solo asdf asdf asdfas"
                 mapName="erangel"
@@ -122,7 +109,7 @@ export default function Pubg() {
             </TabPanel>
             <TabPanel>
               <MatchPubg
-                image={pubgsqd}
+                image={''}
                 alt="hello"
                 matchName="Solo asdf asdf asdfas"
                 mapName="erangel"
@@ -135,7 +122,7 @@ export default function Pubg() {
             </TabPanel>
             <TabPanel>
               <MatchPubg
-                image={pubgstdm}
+                image={''}
                 alt="hello"
                 matchName="Solo asdf asdf asdfas"
                 mapName="erangel"
@@ -152,3 +139,4 @@ export default function Pubg() {
     </Stack>
   );
 }
+
