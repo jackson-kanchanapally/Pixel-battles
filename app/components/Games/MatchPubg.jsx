@@ -34,7 +34,7 @@ export default function MatchPubg({
     <Flex
       px="20px"
       bg="rgba(0, 0, 0, 0.50)"
-      h={["300px","290px"]}
+      h={["210px","290px"]}
       m="auto"
       mt='10px'
       py="25px"
@@ -47,12 +47,12 @@ export default function MatchPubg({
         <Img
           src={image}
           alt={alt}
-          width="120"
+          width={['85px',"120"]}
           borderRadius="10px"
           ml={["", "-10"]}
         />
         <Box ml="10px">
-          <Text as="b" fontSize={["18"]} color='white'>
+          <Text as="b" fontSize={['12px',"18"]} color='white'>
             {matchName.toUpperCase()}
           </Text>
           <Box color="gray.400">
@@ -63,15 +63,16 @@ export default function MatchPubg({
           </Box>
         </Box>
       </HStack>
-      <HStack mt="30px">
+      <HStack mt={["15px","30px"]}>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height="80px"
-          width={["100px","130px"]}
+          height={["62px","80px"]}
+          pt={["17px","13px"]}
+          width={["80px","130px"]}
           borderRadius="10px"
           align="center"
-          pt="13px"
-
+          
+          fontSize={['11px']}
           color='white'
         >
           PRIZE POOL :
@@ -80,11 +81,13 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height="80px"
-          width={["100px","130px"]}
+          height={["62px","80px"]}
+          pt={["17px","13px"]}
+          width={["80px","130px"]}
           borderRadius="10px"
           align="center"
-          pt="13px"
+         
+          fontSize={['11px']}
           color='white'
         >
           PLATFORM :
@@ -93,11 +96,12 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height="80px"
-          width={["100px","130px"]}
+          height={["62px","80px"]}
+          pt={["17px","13px"]}
+          width={["80px","130px"]}
           borderRadius="10px"
           align="center"
-          pt="13px"
+          fontSize={['11px']}
           color='white'
         >
           ENTRY FEE :
@@ -105,14 +109,15 @@ export default function MatchPubg({
          <Text color='yellow.400'> &#8377; {entryFee}</Text>
         </Box>
       </HStack>
-      <Box w={["95%","90%"]} py="20px">
+      <Box w={["95%","90%"]} py={["10px","20px"]}>
         <Progress
           colorScheme="yellow"
           borderRadius="10px"
           bg='gray.800'
           value={80}
+          size={['xs','sm']}
         />
-        <Flex py='10px' color="gray.400" >SPOTS LEFT : &nbsp;<Text color='yellow.400'>{spots}</Text></Flex>
+        <Flex py='10px' fontSize={['13px']} color="gray.400" >SPOTS LEFT : &nbsp;<Text color='yellow.400'>{spots}</Text></Flex>
       </Box>
       
     </Flex>

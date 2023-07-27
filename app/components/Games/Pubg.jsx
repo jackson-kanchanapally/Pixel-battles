@@ -46,7 +46,7 @@ export default function Pubg() {
         <Tabs
           variant="unstyled"
           h={["80vh", "80vh"]}
-          w={['360px','580px']}
+          w={['90vw','580px']}
           bg="rgba(255, 255, 255, 0.08)"
           borderRadius="10px"
         >
@@ -65,15 +65,15 @@ export default function Pubg() {
                 width={["50px", "70px"]}
                 borderRadius="10px"
                 position="absolute"
-                ml={["20px", "80px"]}
+                ml={["15px", "80px"]}
               />
-              <Text m="auto" color='white' py="40px" pl={['35px','']} fontSize={["15px", "18px"]}>
+              <Text m="auto" color='white' py="40px" pl={['38px','']} fontSize={["13px", "18px"]}>
                 BATTLEGROUNDS MOBILE INDIA
               </Text>
             </HStack>
             <TabList
               // bg="rgba(0, 0, 0, 0.80)"
-              width={["360px", "600px"]}
+              width={["90vw", "600px"]}
               borderRadius="10px"
               color='white'
             >
