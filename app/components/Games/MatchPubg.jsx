@@ -52,7 +52,7 @@ export default function MatchPubg({
           ml={["", "-10"]}
         />
         <Box ml="10px">
-          <Text as="b" fontSize={["18"]}>
+          <Text as="b" fontSize={["18"]} color='white'>
             {matchName.toUpperCase()}
           </Text>
           <Box color="gray.400">
@@ -71,6 +71,8 @@ export default function MatchPubg({
           borderRadius="10px"
           align="center"
           pt="13px"
+
+          color='white'
         >
           PRIZE POOL :
           <br />
@@ -83,6 +85,7 @@ export default function MatchPubg({
           borderRadius="10px"
           align="center"
           pt="13px"
+          color='white'
         >
           PLATFORM :
           <br />
@@ -95,6 +98,7 @@ export default function MatchPubg({
           borderRadius="10px"
           align="center"
           pt="13px"
+          color='white'
         >
           ENTRY FEE :
           <br />
