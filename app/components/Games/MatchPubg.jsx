@@ -34,7 +34,7 @@ export default function MatchPubg({
     <Flex
       px="20px"
       bg="rgba(0, 0, 0, 0.70)"
-      h="290px"
+      h={["300px","290px"]}
       m="auto"
       mt='10px'
       py="25px"
@@ -67,7 +67,7 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height="80px"
-          width={["105px","130px"]}
+          width={["100px","130px"]}
           borderRadius="10px"
           align="center"
           pt="13px"
@@ -81,7 +81,7 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height="80px"
-          width={["105px","130px"]}
+          width={["100px","130px"]}
           borderRadius="10px"
           align="center"
           pt="13px"
@@ -94,7 +94,7 @@ export default function MatchPubg({
         <Box
           bg="rgba(0, 0, 0, 0.80)"
           height="80px"
-          width={["105px","130px"]}
+          width={["100px","130px"]}
           borderRadius="10px"
           align="center"
           pt="13px"
