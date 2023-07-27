@@ -59,7 +59,7 @@ export default function Footer() {
           </Box>
           <Box pb={["8px"]}>
             {" "}
-            <Text fontSize="15">Terms</Text>
+            <Link href='/Content/about' ><Text fontSize="15">Terms</Text></Link>
           </Box>
         </Box>
       </Flex>

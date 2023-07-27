@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Flex, Text, Button, Spacer, HStack, Image } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
-import GameSec from "./GameSec";
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["500"],
