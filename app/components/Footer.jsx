@@ -2,16 +2,22 @@ import React from "react";
 import { FaTwitter, FaFacebook, FaTelegram } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import Link from "next/link";
+import logo from "@/public/as.jpg"
 import {
   Box,
   Flex,
   Divider,
   Text,
   HStack,
-  Image,
   IconButton,
+  chakra
 } from "@chakra-ui/react";
+import Image from 'next/image'
 export default function Footer() {
+  const Img = chakra(Image, {
+    shouldForwardProp: (prop) =>
+      ["width", "height", "src", "alt"].includes(prop),
+  });
   return (
     <Box>
       <Flex
@@ -20,7 +26,7 @@ export default function Footer() {
         ml={["20%"]}
         py={["70px"]}
         color="white"
-        direction={["column", "row"]}
+        direction={["column", "row"]} 
       >
         <Box width="60%">
           <Box pb={["10px"]}>
@@ -66,7 +72,7 @@ export default function Footer() {
       <Divider orientation="horizontal" color="white" width="70%" m="auto" />
       <Flex m="20px" alignItems="center" direction="column" >
         <HStack>
-          <Image src="as.jpg" width="250px" alt="pixel battles" mb="10px" />
+          <Img src={logo} width="250px" alt="pixel battles" mb="10px" />
         </HStack>
         <HStack spacing="15px" fontSize="30px" mb="30px" >
           <Link href="#" target="_blank" >

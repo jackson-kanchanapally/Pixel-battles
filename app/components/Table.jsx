@@ -7,7 +7,7 @@ const oswald = Oswald({
 import { HStack, Stack, Box, Text } from "@chakra-ui/react";
 export default function Tab() {
   return (
-    <Stack px={["4%", "270px"]} my="10%">
+    <Stack  px={["4%", "270px"]} my="10%">
       <Box color="#cdb206" fontSize={['15',"20"]}>
         <h1 className={oswald.className}>WINNERS</h1>
       </Box>

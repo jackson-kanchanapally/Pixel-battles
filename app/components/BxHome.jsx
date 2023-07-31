@@ -14,7 +14,7 @@ const oswald = Oswald({
 });
 export default function BxHome() {
   return (
-    <Flex >
+    <Flex>
       <Box pos="absolute" height='100%' >
      <Box>
      <BHero/>
@@ -43,15 +43,13 @@ export default function BxHome() {
         </Box>
       </Box>
       <Box pos="relative" top={["600px","900px"]}>
-  
-        
       <Box>
       <GameSec />
       </Box>
-        <Exp/>
+        <Exp/> 
         <Tab/>
         <Quc/>
-       {/* <Pp/> */}
+        {/* <Pp/> */}
       <Footer/>
       </Box>
     </Flex>

@@ -22,6 +22,7 @@ import pubgsqd from "@/public/pubgsqd.jpg";
 import pubgsolo from "@/public/pubgsoloo.jpg";
 import pubgstdm from "@/public/pubgtdm.jpg";
 import MatchPubg from "./MatchPubg";
+import Footer from "../Footer";
 export default function Pubg() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
@@ -29,7 +30,8 @@ export default function Pubg() {
       ["width", "height", "src", "alt"].includes(prop),
   });
   return (
-    <Stack h={["100vh", "100vh"]} overflowX="hidden">
+   <Stack>
+     <Stack h={["100vh", "100vh"]} overflowX="hidden">
       <Img
         src={isLargerThan800 ? bgimg : bgimg2}
         height="100vh"
@@ -150,5 +152,7 @@ export default function Pubg() {
         </Tabs>
       </Flex>
     </Stack>
+    <Footer/>
+   </Stack>
   );
 }

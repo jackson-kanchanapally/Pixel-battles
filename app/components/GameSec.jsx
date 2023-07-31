@@ -8,7 +8,7 @@ const oswald = Oswald({
 });
 export default function GameSec() {
   return (
-    <Flex bgColor="white" justify="center" width="100vw" h="100%">
+    <Flex bgColor="white" justify="center" width={["100vw","98.8vw"]} h="100%">
       <Flex m={["5", "10"]} flexDirection={["column", "column", "row", "row"]}>
         <Box>
           <Link href="/game/pubg">
@@ -28,7 +28,7 @@ export default function GameSec() {
                 fontSize="17"
                 color="black"
                 fontWeight="medium"
-                fontFamily="fantasy"
+                // fontFamily="fantasy"
               >
                 <p>
                   Join the thrilling action of BGMI tournaments and fight your
@@ -39,13 +39,13 @@ export default function GameSec() {
           </Link>
           <Link href="/game/pubg">
             <Image
-              src="pubg1.jpg"
+              src="pubg2.jpg"
               alt="pubg"
-              height={["", "65vh"]}
+              height={["48vh", "65vh"]}
               borderRadius="30px"
               filter="grayscale(100%)"
               m={["auto", "0"]}
-              width={["85%", "85%", "95%", "480px", "480px"]}
+              width={["85%", "85%", "50vw", "480px", "480px"]}
             />
           </Link>
           <Box mt="35px" display={["none", "block"]}>
@@ -58,7 +58,7 @@ export default function GameSec() {
               fontSize="17"
               color="black"
               fontWeight="medium"
-              fontFamily="fantasy"
+              // fontFamily="fantasy"
             >
               <p>
                 Join the thrilling action of BGMI tournaments and fight your way
@@ -68,7 +68,7 @@ export default function GameSec() {
           </Box>
         </Box>
 
-        <Box ml={["", "", "", "5"]} mt={["10", "", "0", "0"]}>
+        <Box ml={["", "", "5", "5"]} mt={["10", "", "0", "0"]}>
           {" "}
           <Link href="/game/freefire">
             <Image
@@ -78,7 +78,7 @@ export default function GameSec() {
               borderRadius="30px"
               filter="grayscale(100%)"
               m={["auto", "0"]}
-              width={["85%", "85%", "95%", "480px", "480px"]}
+              width={["85%", "85%", "50vw", "480px", "480px"]}
             />
           </Link>
           <Link href="/game/freefire">
@@ -92,7 +92,7 @@ export default function GameSec() {
                 fontSize="17"
                 color="black"
                 fontWeight="medium"
-                fontFamily="fantasy"
+              //  fontFamily="fantasy"
               >
                 <p>
                   Step into the world of Free Fire and battle it out to be the

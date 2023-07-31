@@ -18,14 +18,16 @@ import bgimg2 from "@/public/ffbg.jpg";
 import ffsolo from "@/public/ffsolo.jpg";
 import ff from "@/public/ff.jpg";
 import MatchPubg from "./MatchPubg";
+import Footer from "../Footer";
 export default function Freefire() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
-  });
+  }); 
   return (
-    <Stack h={["100vh", "100vh"]} overflowX="hidden">
+   <Stack>
+     <Stack h={["100vh", "100vh"]} overflowX="hidden">
       <Img
         src={isLargerThan800 ? bgimg : bgimg2}
         height="100vh"
@@ -136,7 +138,10 @@ export default function Freefire() {
           </TabPanels>
         </Tabs>
       </Flex>
+    
     </Stack>
+    <Footer/>
+   </Stack>
   );
 }
 
