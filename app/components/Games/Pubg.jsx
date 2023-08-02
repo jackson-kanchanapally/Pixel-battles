@@ -24,7 +24,6 @@ import pubgsolo from "@/public/pubgsoloo.jpg";
 import pubgstdm from "@/public/pubgtdm.jpg";
 import MatchPubg from "./MatchPubg";
 import Footer from "../Footer";
-import RegisterForm from "../RegisterForm";
 export default function Pubg() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
