@@ -141,9 +141,7 @@ export default function Pubg() {
                     prize="1000"
                     spots="100"
                     // onClick={<RegisterForm />}
-                  >
-                   
-                    </MatchPubg>
+                  ></MatchPubg>
                 </Link>
               </TabPanel>
               <TabPanel>

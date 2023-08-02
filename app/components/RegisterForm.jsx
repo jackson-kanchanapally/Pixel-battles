@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import Formi from "@/app/components/Form";
-export default function RegisterForm({type,gameMap,entryfee}) {
+export default function RegisterForm({ type, gameMap, entryfee }) {
   const vaildateSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
     username: Yup.string().required("Username is required"),
@@ -21,7 +21,7 @@ export default function RegisterForm({type,gameMap,entryfee}) {
   const onSubmit = async (val, { resetForm }) => {
     alert(val.email + "  " + val.pass);
   };
-  
+
   return (
     <Flex
       justifyContent="center"
@@ -72,22 +72,28 @@ export default function RegisterForm({type,gameMap,entryfee}) {
                 type="email"
                 variant="filled"
               />
-              <Flex mt='10px'>
+              <Flex mt="10px">
                 <VStack>
                   <Box>
                     <Heading fontSize="17px">About Contest :</Heading>
                   </Box>
                   <HStack>
                     {" "}
-                    <Box><Heading fontSize="14px">Type :   {type}</Heading></Box>
-                    <Box><Heading fontSize="14px">Map : {gameMap}</Heading> </Box>
+                    <Box>
+                      <Heading fontSize="14px">Type : {type}</Heading>
+                    </Box>
+                    <Box>
+                      <Heading fontSize="14px">Map : {gameMap}</Heading>{" "}
+                    </Box>
                   </HStack>
-                  <Box><Heading fontSize="14px">Entry Fee : {entryfee}</Heading> </Box>
-
-                
+                  <Box>
+                    <Heading fontSize="14px">Entry Fee : {entryfee}</Heading>{" "}
+                  </Box>
                 </VStack>
               </Flex>
-              <Flex m='auto'><Box>Contest BGMI Solo #1 will start on</Box> </Flex>
+              <Flex m="auto">
+                <Box>Contest BGMI Solo #1 will start on</Box>{" "}
+              </Flex>
               <Button
                 _hover={{ bg: "yellow.300" }}
                 w="full"
