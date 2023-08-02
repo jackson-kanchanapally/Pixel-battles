@@ -6,7 +6,6 @@ import GameSec from "./GameSec";
 import Exp from "./Exp";
 import Tab from "./Table";
 import Quc from "./Quic";
-import Pp from "./Pp";
 import Footer from "./Footer";
 const oswald = Oswald({
   subsets: ["latin"],
