@@ -7,6 +7,7 @@ import {
   Flex,
   chakra,
   Progress,
+  Button,
 } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 const oswald = Oswald({
@@ -15,6 +16,7 @@ const oswald = Oswald({
 });
 
 import Image from "next/image";
+import RegisterForm from "../RegisterForm";
 export default function MatchPubg({
   image,
   alt,
@@ -30,7 +32,13 @@ export default function MatchPubg({
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
   });
+  const [cli,setCli]=React.useState(false)
+  const handle=()=>{
+    setCli(!cli);
+    <RegisterForm/>
+  }
   return (
+
     <Flex
       px="20px"
       bg="rgba(0, 0, 0, 0.50)"
@@ -110,6 +118,7 @@ export default function MatchPubg({
           <br />
          <Text color='yellow.400'> &#8377; {entryFee}</Text>
         </Box>
+       
       </HStack>
       <Box w={["95%","90%"]} py={["10px","20px"]}>
         <Progress

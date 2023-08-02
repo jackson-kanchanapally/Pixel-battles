@@ -7,9 +7,9 @@ const oswald = Oswald({
 });
 export default function Exp() {
   return (
-    <HStack width={['100%',"97vw"]} px={["4%", "270px"]} my={["15%", "5%"]}>
-      <Box width={['100%','70%']}>
-        <Box color="#cdb206" fontSize={["25", "30", "35", "35"]} >
+    <HStack width={['100%',"98vw"]} px={["4%", "270px"]} my={["15%", "5%"]}>
+      <Box width={['100%','100%']}>
+        <Box color="#cdb206" fontSize={["25", "30", "35", "34"]} >
           <h1 className={oswald.className}>
             Experience Adrenaline-Fueled Action
           </h1>

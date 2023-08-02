@@ -16,6 +16,7 @@ export default function Formi({
   label,
   variant,
   ...rest
+ 
 }) {
   return (
     //  <>
@@ -36,7 +37,7 @@ export default function Formi({
       validate={(value) => rest.validate && rest.validate(value)}
     >
       {({ field, form }) => (
-        <FormControl isInvalid={form.errors[name] && form.touched[name]}>
+        <FormControl isInvalid={form.errors[name] && form.touched[name]} {...rest}>
           <FormLabel htmlFor={name}>{label}</FormLabel>
           <Input {...field} id={name} type={type} variant="filled" placeholder={label} {...rest} borderColor='gray.400'/>
           <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
