@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Button, Spacer, HStack, Image } from "@chakra-ui/react";
+import { Box, Spacer, HStack, Image } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 const oswald = Oswald({
   subsets: ["latin"],
