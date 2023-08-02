@@ -32,11 +32,7 @@ export default function MatchPubg({
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
   });
-  const [cli,setCli]=React.useState(false)
-  const handle=()=>{
-    setCli(!cli);
-    <RegisterForm/>
-  }
+  
   return (
 
     <Flex
