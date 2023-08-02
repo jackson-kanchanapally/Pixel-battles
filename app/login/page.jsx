@@ -3,7 +3,7 @@ import * as React from "react";
  import { Box, Button, Flex, VStack,} from "@chakra-ui/react";
 import { Formik, Field,Form } from "formik";
 import Formi from "../components/Form";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 export default function LoginPage() {
     

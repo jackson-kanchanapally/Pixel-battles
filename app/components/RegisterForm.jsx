@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Form, Formik } from "formik";
-import * as Yup from "Yup";
+import { object, string, number, date, InferType } from 'yup';
 import {
   Flex,
   Box,
@@ -14,9 +14,9 @@ import {
 
 import Formi from "@/app/components/Form";
 export default function RegisterForm({ type, gameMap, entryfee }) {
-  const vaildateSchema = Yup.object({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    username: Yup.string().required("Username is required"),
+  const vaildateSchema = object({
+    email: string().email("Invalid email").required("Email is required"),
+    username: string().required("Username is required"),
   });
   const onSubmit = async (val, { resetForm }) => {
     alert(val.email + "  " + val.pass);
