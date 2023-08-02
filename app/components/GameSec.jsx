@@ -8,7 +8,7 @@ const oswald = Oswald({
 });
 export default function GameSec() {
   return (
-    <Flex bgColor="white" justify="center" width={["100vw","98.8vw"]} h="100%">
+    <Flex bgColor="white" justify="center" width={["100vw", "98.8vw"]} h="100%">
       <Flex m={["5", "10"]} flexDirection={["column", "column", "row", "row"]}>
         <Box>
           <Link href="/game/pubg">
@@ -92,7 +92,7 @@ export default function GameSec() {
                 fontSize="17"
                 color="black"
                 fontWeight="medium"
-              //  fontFamily="fantasy"
+                //  fontFamily="fantasy"
               >
                 <p>
                   Step into the world of Free Fire and battle it out to be the
