@@ -14,10 +14,10 @@ import {
 
 import Formi from "@/app/components/Form";
 export default function FormPage() {
-  const vaildateSchema = Yup.object({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    username: Yup.string().required("Username is required"),
-  });
+  // const vaildateSchema = Yup.object({
+  //   email: Yup.string().email("Invalid email").required("Email is required"),
+  //   username: Yup.string().required("Username is required"),
+  // });
   const onSubmit = async (val, { resetForm }) => {
     alert(val.email + "  " + val.pass);
   };
@@ -38,7 +38,7 @@ export default function FormPage() {
             phno: "",
             email: "",
           }}
-          validationSchema={vaildateSchema}
+          // validationSchema={vaildateSchema}
           onSubmit={onSubmit}
         >
           {(props) => (
