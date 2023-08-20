@@ -17,7 +17,7 @@ const theme = extendTheme({
       body: {
         //bg: "#1A202C", // Replace with your desired background color
         bg: "black",
-        color:'gray.100'
+        // color:'gray.100'
       },
     },
   },

@@ -8,6 +8,7 @@ import {
   chakra,
   Progress,
   Button,
+  Image
 } from "@chakra-ui/react";
 import {
   Popover,
@@ -26,7 +27,7 @@ const oswald = Oswald({
   weight: ["500"],
 });
 
-import Image from "next/image";
+// import Image from "next/image";
 import RegisterForm from "../RegisterForm";
 export default function MatchPubg({
   image,
@@ -50,7 +51,9 @@ export default function MatchPubg({
     <Flex
       px="20px"
       bg="rgba(0, 0, 0, 0.50)"
-      h={["210px", "290px"]}
+      // bg='gray.900'
+      // h={["210px", "290px"]}
+      h={["210px", "255px"]}
       m="auto"
       mt="10px"
       py="25px"
@@ -68,22 +71,22 @@ export default function MatchPubg({
           borderRadius="10px"
           ml={["", "-10"]}
         />
-        <Box ml="10px">
-          <Text as="b" fontSize={["12px", "18"]} color="white">
-            {matchName.toUpperCase()}
+        <Box ml="10px"  w='290px'>
+          <Text as="b" fontSize={["12px", "18"]} color="white" >
+            {matchName}
           </Text>
-          <Box color="gray.400">
-            <Text align="center" fontSize={["9.5px", "15px"]}>
-              MAP : {mapName.toUpperCase()} &nbsp; &nbsp;|&nbsp;&nbsp; TIME :{" "}
+          <Box color="gray.400"  w='290px'>
+            <Text fontSize={["9.5px", "15px"]}>
+              MAP : {mapName} &nbsp; &nbsp;|&nbsp;&nbsp; TIME :{" "}
               {time}
             </Text>
           </Box>
         </Box>
       </HStack>
-      <HStack mt={["15px", "30px"]}>
+      <HStack mt={["15px", "20px"]}>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "80px"]}
+          height={["62px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
           width={["80px", "110px"]}
@@ -97,7 +100,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "80px"]}
+          height={["62px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
           width={["80px", "110px"]}
@@ -111,7 +114,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "80px"]}
+          height={["62px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
           width={["80px", "110px"]}
@@ -125,7 +128,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "80px"]}
+          height={["62px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
           width={["80px", "110px"]}

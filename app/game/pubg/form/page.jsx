@@ -11,6 +11,8 @@ import {
   VStack,
   Heading,
 } from "@chakra-ui/react";
+import { db } from "@/app/firebase";
+import { doc, setDoc,updateDoc} from 'firebase/firestore'
 
 import Formi from "@/app/components/Form";
 export default function FormPage() {

@@ -91,7 +91,7 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 </HStack>
              <HStack>
              <Box>
-                      <Heading fontSize="13.5px">Map : {mapName.toUpperCase()}</Heading>{" "}
+                      <Heading fontSize="13.5px">Map : {mapName}</Heading>{" "}
                     </Box>
              </HStack>
               </Stack>

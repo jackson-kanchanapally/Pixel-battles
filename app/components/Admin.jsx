@@ -1,9 +1,72 @@
-import { Flex, Box, Button, VStack } from "@chakra-ui/react";
+import { Flex, Box, Button, VStack, Text } from "@chakra-ui/react";
 import React from "react";
 import Formi from "./Form";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { db } from "@/app/firebase";
+import { doc, setDoc,updateDoc,collection,getDocs} from 'firebase/firestore'
+import { UserAuth } from "@/app/context/AuthContext";
+
 export default function Admin() {
+  const {user}=UserAuth()
+  const [loading,setLoading]=React.useState(false)
+  const [gameList, setGameList] = React.useState([]);
+  let currentUser = null;
+
+  if (user) {
+    currentUser = user.uid;
+  }
+  const [games, setGames] = React.useState([]);
+
+  React.useEffect(() => {
+    // Define the Firestore collection reference
+    const gamesCollection = collection(db, "games");
+
+    // Use getDocs to retrieve data from the "games" collection
+    const getGames = async () => {
+      try {
+        const querySnapshot = await getDocs(gamesCollection);
+        const gamesData = [];
+        querySnapshot.forEach((doc) => {
+          gamesData.push(doc.data());
+        });
+        setGames(gamesData);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    };
+
+    // Call the function to retrieve the games
+    getGames();
+  }, []); 
+console.log(games)
+  async function saveData(gameData) {
+    try {
+      const gameDocRef = doc(db, "games", gameData.matchname); 
+      await setDoc(gameDocRef, gameData);
+      console.log(`Successfully added ${gameData.game}`);
+    } catch (err) {
+      console.error(`Error adding ${gameData.game}:`, err);
+    }
+  }
+  const onSubmit = async (val, { resetForm }) => {
+      const gameData={
+        game:val.game,
+        matchname:val.matchname,
+        map:val.map,
+        type:val.type,
+        pricePool:val.pricePool,
+        entryfee:val.entryfee,
+        time:val.time
+      }
+      if (currentUser) {
+        await saveData(gameData);
+        setGameList([...gameList, gameData]); 
+      }
+  
+      resetForm();
+      setLoading(true)
+  }
   const vaildateSchema = Yup.object({
     game: Yup.string().required("Game is required"),
     matchname: Yup.string().required("Match name is required"),
@@ -12,6 +75,7 @@ export default function Admin() {
     pricePool: Yup.string().required("Price pool is required"),
     entryfee: Yup.string().required("Entry fee is required"),
     time: Yup.string().required("Time is required"),
+    date:Yup.string().required("Date is required")
   });
   return (
     <Flex bg="gray.900" justify="center">
@@ -24,10 +88,11 @@ export default function Admin() {
             type:"",
             pricePool: "",
             entryfee: "",
+            date:"",
             time: "",
           }}
           validationSchema={ vaildateSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={onSubmit}
         >
           {(props) => (
             <Form>
@@ -76,6 +141,13 @@ export default function Admin() {
                   variant="filled"
                 />
                 <Formi
+                  label="Date"
+                  id="date"
+                  name="date"
+                  type="date"
+                  variant="filled"
+                />
+                <Formi
                   label="Time"
                   id="time"
                   name="time"
@@ -91,6 +163,7 @@ export default function Admin() {
           )}
         </Formik>
       </Box>
+    
     </Flex>
   );
 }

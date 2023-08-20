@@ -12,6 +12,7 @@ import {
   TabPanel,
   useMediaQuery,
   Button,
+  Spinner,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -19,18 +20,55 @@ import Image from "next/image";
 import bgimg from "@/public/pubgback.jpg";
 import bgimg2 from "@/public/pubgback2.jpg";
 import pubg1 from "@/public/pubg1.jpg";
-import pubgsqd from "@/public/pubgsqd.jpg";
-import pubgsolo from "@/public/pubgsoloo.jpg";
+import pubgsquad from "@/public/pubgsquad.jpg";
+import pubgsolo from "@/public/pubgsolo.jpg";
 import pubgstdm from "@/public/pubgtdm.jpg";
 import MatchPubg from "./MatchPubg";
 import Footer from "../Footer";
 import PopMatch from "./PopMatch";
+import { db } from "@/app/firebase";
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 export default function Pubg() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
   });
+  const [games, setGames] = React.useState([]);
+  const [solof, setSolof] = React.useState([]);
+  const [sqdf, setSqdf] = React.useState([]);
+  const [tdmf, setTdmf] = React.useState([]);
+  React.useEffect(() => {
+    const gamesCollection = collection(db, "games");
+
+    const getGames = async () => {
+      try {
+        const querySnapshot = await getDocs(gamesCollection);
+        const gamesData = [];
+        querySnapshot.forEach((doc) => {
+          gamesData.push(doc.data());
+        });
+        setGames(gamesData);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    };
+
+    getGames();
+    const filterSolo = games?.filter((item) => item.type === "solo");
+    setSolof(filterSolo);
+    const filterSqd = games?.filter((item) => item.type === "squad");
+    setSqdf(filterSqd);
+
+    const filterTdm = games?.filter((item) => item.type === "tdm");
+    setTdmf(filterTdm);
+  }, [games]);
 
   return (
     <Stack>
@@ -66,9 +104,10 @@ export default function Pubg() {
         >
           <Tabs
             variant="unstyled"
-            h={["80vh", "80vh"]}
+            h={["100%", "100%"]}
             w={["90vw", "580px"]}
-            bg="rgba(255, 255, 255, 0.08)"
+            // bg="rgba(255, 255, 255, 0.08)"
+            bg="gray.800"
             borderRadius="10px"
           >
             <Flex
@@ -125,56 +164,74 @@ export default function Pubg() {
             </Flex>
             <TabPanels>
               <TabPanel>
-                {/* <Link
-                  href={{
-                    pathname: "/game/pubg/form",
-                    query: { matchNumber: "123", gameName: "pubg" },
-                  }}
-                > */}
-                <MatchPubg
-                  image={pubgsolo}
-                  alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  time="12:00"
-                  entryfee="100"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                  // onClick={<RegisterForm />}
-                  type="SOLO"
-                  gameMap="ERANGLE"
-                  mapName="erangle"
-                ></MatchPubg>
-                {/* </Link>  */}
-                {/* <PopMatch/> */}
+                {solof?
+                  (
+                    solof.map((game, index) => (
+                      <MatchPubg
+                        key={index}
+                        image={`/pubg${game.type}.jpg`}
+                        alt="hello"
+                        matchName={game.matchname?.toUpperCase()}
+                        time={game.time}
+                        entryfee={game.entryfee}
+                        platform="mobile"
+                        prize={game.pricePool}
+                        spots="100"
+                        type={game.type?.toUpperCase()}
+                        gameMap={game.map}
+                        mapName={game.map?.toUpperCase()}
+                      ></MatchPubg>
+                    ))
+                  ):(
+                    <Spinner size='lg' color='yellow.400' ml='45%' mt='20%' mb='20%'/>
+                  )}
               </TabPanel>
               <TabPanel>
-                <MatchPubg
-                  image={pubgsqd}
-                  alt="hello"
-                  matchName="Squad"
-                  time="12:00"
-                  entryfee="100"
-                  mapName="erangle"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                  type="SQUAD"
-                />
+                {sqdf ?
+                  sqdf.map((game, index) => (
+                    <MatchPubg
+                      key={index}
+                      image={`/pubg${game.type}.jpg`}
+                      alt="hello"
+                      matchName={game.matchname?.toUpperCase()}
+                      time={game.time}
+                      entryfee={game.entryfee}
+                      platform="mobile"
+                      prize={game.pricePool}
+                      spots="100"
+                      // onClick={<RegisterForm />}
+                      type={game.type?.toUpperCase()}
+                      gameMap={game.map}
+                      mapName={game.map?.toUpperCase()}
+                    />
+                  )):
+                  (
+                    <Spinner size='lg' color='yellow.400' ml='45%' mt='20%' mb='20%'/>
+                  )}
               </TabPanel>
               <TabPanel>
-                <MatchPubg
-                  image={pubgstdm}
-                  alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  mapName="erangel"
-                  time="12:00"
-                  entryfee="100"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                  type="TDM"
-                />
+                {tdmf ?
+                  tdmf.map((game, index) => (
+                    <MatchPubg
+                      key={index}
+                      image={`/pubg${game.type}.jpg`}
+                      alt="hello"
+                      matchName={game.matchname?.toUpperCase()}
+                      time={game.time}
+                      entryfee={game.entryfee}
+                      platform="mobile"
+                      prize={game.pricePool}
+                      spots="100"
+                      // onClick={<RegisterForm />}
+                      type={game.type?.toUpperCase()}
+                      gameMap={game.map}
+                      mapName={game.map?.toUpperCase()}
+                    />
+                  ))
+                :(
+                  <Spinner size='lg' color='yellow.400' ml='45%' mt='20%' mb='20%'/>
+                )
+                }
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 export default function Rpage() {
   return (
-    <Flex direction="column" alignItems="center" p="40px">
+    <Flex direction="column" alignItems="center" p="40px" color='gray.100'>
       <Box m="auto" mt="30px" mb="50px">
         <Text fontSize="4xl" as="b" color="yellow.400">
           Cancellation and Refund Policy – PixelBattles:

@@ -15,8 +15,8 @@ import {
 import bgimg from "@/public/pubgback.jpg";
 import bgimg2 from "@/public/pubgback2.jpg";
 import pubg1 from "@/public/pubg1.jpg";
-import pubgsqd from "@/public/pubgsqd.jpg";
-import pubgsolo from "@/public/pubgsoloo.jpg";
+import pubgsquad from "@/public/pubgsquad.jpg";
+import pubgsolo from "@/public/pubgsolo.jpg";
 import pubgstdm from "@/public/pubgtdm.jpg";
 import Footer from "../Footer";
 export default function PopMatch() {
@@ -40,7 +40,6 @@ export default function PopMatch() {
       <PopoverHeader>Header</PopoverHeader>
       <PopoverCloseButton />
       <PopoverBody>
-        
       </PopoverBody>
       <PopoverFooter>This is the footer</PopoverFooter>
     </PopoverContent>

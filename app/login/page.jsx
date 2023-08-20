@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, Flex, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, VStack,Text } from "@chakra-ui/react";
 import { Formik, Field,Form } from "formik";
 import React,{useState} from 'react'
 // import Formi from "../../components/Form";
@@ -27,7 +27,6 @@ export default function Login() {
       signInWithEmailAndPassword(auth,val.email,val.password)
       .then(()=>{
         setLoading(true)
-        alert('success')
         router.push('/admin')
       }).catch((err)=>{
         if (err && err.code === 'auth/wrong-password') {
@@ -66,9 +65,10 @@ export default function Login() {
                   variant="filled"
                 />
 
-                <Button type="submit" bg="yellow.400" w="full">
+                <Button isLoading={loading?true:false} type="submit" bg="yellow.400" w="full">
                   Login
                 </Button>
+                {loginEr===''?'':<Text m='auto' color='red' fontSize='15px'>&#9888; {loginEr}</Text>}
               </VStack>
             </Form>
           )}
