@@ -61,11 +61,17 @@ export default function Footer() {
           </Box>
           <Box pb={["8px"]}>
             {" "}
+            <Link href='/contact'>
             <Text fontSize="15">Contact</Text>
+            </Link>
           </Box>
           <Box pb={["8px"]}>
             {" "}
-            <Link href='/Content/about' ><Text fontSize="15">Terms</Text></Link>
+            <Link href='/privacypolicy' ><Text fontSize="15">Privacy Policy</Text></Link>
+          </Box>
+          <Box pb={["8px"]}>
+            {" "}
+            <Link href='/privacypolicy' ><Text fontSize="15">Terms</Text></Link>
           </Box>
         </Box>
       </Flex>

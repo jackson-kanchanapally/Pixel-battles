@@ -9,6 +9,17 @@ import {
   Progress,
   Button,
 } from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+} from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 const oswald = Oswald({
   subsets: ["latin"],
@@ -25,8 +36,10 @@ export default function MatchPubg({
   mapName,
   prize,
   platform,
-  entryFee,
   spots,
+  type,
+  gameMap,
+  entryfee
 }) {
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
@@ -73,7 +86,7 @@ export default function MatchPubg({
           height={["62px", "80px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
-          width={["80px", "130px"]}
+          width={["80px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
@@ -87,7 +100,7 @@ export default function MatchPubg({
           height={["62px", "80px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
-          width={["80px", "130px"]}
+          width={["80px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
@@ -101,14 +114,33 @@ export default function MatchPubg({
           height={["62px", "80px"]}
           pt={["17px", "15px"]}
           fontSize={["11px", "14px"]}
-          width={["80px", "130px"]}
+          width={["80px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
         >
           ENTRY FEE :
           <br />
-          <Text color="yellow.400"> &#8377; {entryFee}</Text>
+          <Text color="yellow.400"> &#8377; {entryfee}</Text>
+        </Box>
+        <Box
+          bg="rgba(0, 0, 0, 0.80)"
+          height={["62px", "80px"]}
+          pt={["17px", "15px"]}
+          fontSize={["11px", "14px"]}
+          width={["80px", "110px"]}
+          borderRadius="10px"
+          align="center"
+          color="white"
+        >
+          <Popover placement='auto'>
+            <PopoverTrigger>
+              <Button>Join</Button>
+            </PopoverTrigger>
+            <PopoverContent w={['60vw',"400px"]} borderRadius="10px">
+              <RegisterForm type={type}  mapName={mapName} entryfee={entryfee}/>
+            </PopoverContent>
+          </Popover>
         </Box>
       </HStack>
       <Box w={["95%", "90%"]} py={["10px", "20px"]}>

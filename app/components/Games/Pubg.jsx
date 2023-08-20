@@ -24,6 +24,7 @@ import pubgsolo from "@/public/pubgsoloo.jpg";
 import pubgstdm from "@/public/pubgtdm.jpg";
 import MatchPubg from "./MatchPubg";
 import Footer from "../Footer";
+import PopMatch from "./PopMatch";
 export default function Pubg() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const Img = chakra(Image, {
@@ -124,37 +125,41 @@ export default function Pubg() {
             </Flex>
             <TabPanels>
               <TabPanel>
-                <Link
+                {/* <Link
                   href={{
                     pathname: "/game/pubg/form",
                     query: { matchNumber: "123", gameName: "pubg" },
                   }}
-                >
-                  <MatchPubg
-                    image={pubgsolo}
-                    alt="hello"
-                    matchName="Solo asdf asdf asdfas"
-                    mapName="erangel"
-                    time="12:00"
-                    entryFee="100"
-                    platform="mobile"
-                    prize="1000"
-                    spots="100"
-                    // onClick={<RegisterForm />}
-                  ></MatchPubg>
-                </Link>
+                > */}
+                <MatchPubg
+                  image={pubgsolo}
+                  alt="hello"
+                  matchName="Solo asdf asdf asdfas"
+                  time="12:00"
+                  entryfee="100"
+                  platform="mobile"
+                  prize="1000"
+                  spots="100"
+                  // onClick={<RegisterForm />}
+                  type="SOLO"
+                  gameMap="ERANGLE"
+                  mapName="erangle"
+                ></MatchPubg>
+                {/* </Link>  */}
+                {/* <PopMatch/> */}
               </TabPanel>
               <TabPanel>
                 <MatchPubg
                   image={pubgsqd}
                   alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  mapName="erangel"
+                  matchName="Squad"
                   time="12:00"
-                  entryFee="100"
+                  entryfee="100"
+                  mapName="erangle"
                   platform="mobile"
                   prize="1000"
                   spots="100"
+                  type="SQUAD"
                 />
               </TabPanel>
               <TabPanel>
@@ -164,10 +169,11 @@ export default function Pubg() {
                   matchName="Solo asdf asdf asdfas"
                   mapName="erangel"
                   time="12:00"
-                  entryFee="100"
+                  entryfee="100"
                   platform="mobile"
                   prize="1000"
                   spots="100"
+                  type="TDM"
                 />
               </TabPanel>
             </TabPanels>

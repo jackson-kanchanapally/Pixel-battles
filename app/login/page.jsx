@@ -1,21 +1,37 @@
 "use client";
-import * as React from "react";
- import { Box, Button, Flex, VStack,} from "@chakra-ui/react";
+import { Box, Button, Flex, VStack } from "@chakra-ui/react";
 import { Formik, Field,Form } from "formik";
-import Formi from "../components/Form";
-import * as Yup from "yup";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-export default function LoginPage() {
-    
-  const vaildateSchema = Yup.object({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    pass: Yup.string()
-      .min(6, "Password should be at least 6 characters")
-      .required("Password is required"),
-  });
+import React,{useState} from 'react'
+// import Formi from "../../components/Form";
+import Link from "next/link";
+import { UserAuth } from "../context/AuthContext";
+import { useRouter } from 'next/navigation'
+import {auth} from '../firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import Formi from "@/app/components/Form";
+// import Image from 'next/image'
+export default function Login() {
+  const [loginEr,setLoginEr]=useState('')
+  const [loading, setLoading] = useState(false); 
+  const router = useRouter();
+
+  // React.useEffect(() => {
+  //   setLoading(false); 
+  // }, []);
+
   const onSubmit=async(val,{resetForm})=>{
-    alert(val.email+"  "+val.pass)
-    
+      signInWithEmailAndPassword(auth,val.email,val.password)
+      .then(()=>{
+        setLoading(true)
+        alert('success')
+        router.push('/admin')
+      }).catch((err)=>{
+        if (err && err.code === 'auth/wrong-password') {
+          setLoginEr('Wrong password.');
+          } else{
+            setLoginEr(`Error ${err}`);
+            };
+      })
   }
   return (
     <Flex bg="gray.800" align="center" justify="center" h="100vh">
@@ -25,12 +41,11 @@ export default function LoginPage() {
             email: "",
             password: "",
           }}
-        
-          validationSchema={vaildateSchema}
+          validationSchema={""}
           onSubmit={onSubmit}
         >
           {(props) => (
-            <Form >
+            <Form>
               <VStack spacing={4} align="flex-start">
                 <Formi
                   label="Email Address"
@@ -127,5 +142,3 @@ export default function LoginPage() {
 // };
 
 // export default LoginForm;
-
-
