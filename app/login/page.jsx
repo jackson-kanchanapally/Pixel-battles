@@ -10,6 +10,7 @@ import {auth} from '../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Formi from "@/app/components/Form";
 // import Image from 'next/image'
+import * as Yup from "yup";
 export default function Login() {
   const [loginEr,setLoginEr]=useState('')
   const [loading, setLoading] = useState(false); 
@@ -18,7 +19,10 @@ export default function Login() {
   // React.useEffect(() => {
   //   setLoading(false); 
   // }, []);
-
+  const vaildateSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password:Yup.string().required("Password is required")
+  });
   const onSubmit=async(val,{resetForm})=>{
       signInWithEmailAndPassword(auth,val.email,val.password)
       .then(()=>{
@@ -41,7 +45,7 @@ export default function Login() {
             email: "",
             password: "",
           }}
-          validationSchema={""}
+          validationSchema={vaildateSchema}
           onSubmit={onSubmit}
         >
           {(props) => (

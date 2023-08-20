@@ -17,6 +17,7 @@ export default function FormPage() {
   const vaildateSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
     username: Yup.string().required("Username is required"),
+    phno:Yup.string().required("Mobile number is required")
   });
   const onSubmit = async (val, { resetForm }) => {
     alert(val.email + "  " + val.pass);

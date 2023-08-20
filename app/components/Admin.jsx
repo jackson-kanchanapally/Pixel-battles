@@ -2,7 +2,17 @@ import { Flex, Box, Button, VStack } from "@chakra-ui/react";
 import React from "react";
 import Formi from "./Form";
 import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
 export default function Admin() {
+  const vaildateSchema = Yup.object({
+    game: Yup.string().required("Game is required"),
+    matchname: Yup.string().required("Match name is required"),
+    map: Yup.string().required("Map is required"),
+    type: Yup.string().required("Type is required"),
+    pricePool: Yup.string().required("Price pool is required"),
+    entryfee: Yup.string().required("Entry fee is required"),
+    time: Yup.string().required("Time is required"),
+  });
   return (
     <Flex bg="gray.900" justify="center">
       <Box bg="gray.200" p={6} rounded="md" w={"500px"} mt="50px">
@@ -16,7 +26,7 @@ export default function Admin() {
             entryfee: "",
             time: "",
           }}
-          validationSchema={""}
+          validationSchema={ vaildateSchema}
           onSubmit={(values) => console.log(values)}
         >
           {(props) => (
