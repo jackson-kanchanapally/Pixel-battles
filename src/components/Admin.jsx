@@ -20,12 +20,9 @@ export default function Admin() {
   const router = useRouter();
   let currentUser = null;
 
-  // if (user) {
-  //   currentUser = user.uid;
-  // } else {
-  //   router.push("/login");
-  // }
-
+  if (user) {
+    currentUser = user.uid;
+  } 
   const [games, setGames] = React.useState([]);
   // React.useEffect(() => {
   //   // Define the Firestore collection reference
@@ -58,6 +55,7 @@ export default function Admin() {
       console.error(`Error adding ${gameData.game}:`, err);
     }
   }
+  
   const onSubmit = async (val, { resetForm }) => {
     const gameData = {
       game: val.game,
