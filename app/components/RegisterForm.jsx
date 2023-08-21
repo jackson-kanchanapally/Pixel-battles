@@ -19,6 +19,7 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
   const vaildateSchema = object({
     email: string().email("Invalid email").required("Email is required"),
     username: string().required("Username is required"),
+    phno:string().required("Mobile number is required")
   });
   const onSubmit = async (val, { resetForm }) => {
     alert(val);
@@ -36,6 +37,7 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
             username: "",
             phno: "",
             email: "",
+            instaid:"",
           }}
           validationSchema={vaildateSchema}
           onSubmit={onSubmit}
@@ -56,6 +58,15 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                   Copy your game username and paste here*
                 </Text>
               </Box>
+              <Formi
+                label="Instagram ID"
+                id="instaid"
+                name="instaid"
+                type="text"
+                variant="filled"
+                mb="10px"
+                color="black"
+              />
               <Formi
                 label="Phone Number"
                 id="phone number"

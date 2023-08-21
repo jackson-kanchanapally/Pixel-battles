@@ -6,40 +6,45 @@ import * as Yup from "yup";
 import { db } from "@/app/firebase";
 import { doc, setDoc,updateDoc,collection,getDocs} from 'firebase/firestore'
 import { UserAuth } from "@/app/context/AuthContext";
+import {useRouter} from 'next/navigation'
 
 export default function Admin() {
   const {user}=UserAuth()
   const [loading,setLoading]=React.useState(false)
   const [gameList, setGameList] = React.useState([]);
+  const router=useRouter()
   let currentUser = null;
 
   if (user) {
     currentUser = user.uid;
   }
+  else{
+    router.push('/login')
+  }
   const [games, setGames] = React.useState([]);
 
-  React.useEffect(() => {
-    // Define the Firestore collection reference
-    const gamesCollection = collection(db, "games");
+  // React.useEffect(() => {
+  //   // Define the Firestore collection reference
+  //   const gamesCollection = collection(db, "games");
 
-    // Use getDocs to retrieve data from the "games" collection
-    const getGames = async () => {
-      try {
-        const querySnapshot = await getDocs(gamesCollection);
-        const gamesData = [];
-        querySnapshot.forEach((doc) => {
-          gamesData.push(doc.data());
-        });
-        setGames(gamesData);
-      } catch (error) {
-        console.error("Error fetching games:", error);
-      }
-    };
+  //   // Use getDocs to retrieve data from the "games" collection
+  //   const getGames = async () => {
+  //     try {
+  //       const querySnapshot = await getDocs(gamesCollection);
+  //       const gamesData = [];
+  //       querySnapshot.forEach((doc) => {
+  //         gamesData.push(doc.data());
+  //       });
+  //       setGames(gamesData);
+  //     } catch (error) {
+  //       console.error("Error fetching games:", error);
+  //     }
+  //   };
 
-    // Call the function to retrieve the games
-    getGames();
-  }, []); 
-console.log(games)
+  //   // Call the function to retrieve the games
+  //   getGames();
+  // }, []); 
+// console.log(games)
   async function saveData(gameData) {
     try {
       const gameDocRef = doc(db, "games", gameData.matchname); 

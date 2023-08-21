@@ -3,13 +3,20 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBMdoY-Mg1811Ezn5Pw89ryzJ8vTExmM5M",
-  authDomain: "pixelbattles-d4493.firebaseapp.com",
-  projectId: "pixelbattles-d4493",
-  storageBucket: "pixelbattles-d4493.appspot.com",
-  messagingSenderId: "621382965108",
-  appId: "1:621382965108:web:2564c9c4f710f49f84fe21",
-  measurementId: "G-2JPRJ07ZD2",
+  apiKey: "AIzaSyBurSQHnPaclN0SvhyJ4EROgT_Rw9cFaYA",
+
+  authDomain: "pixelbattle01-d398e.firebaseapp.com",
+
+  projectId: "pixelbattle01-d398e",
+
+  storageBucket: "pixelbattle01-d398e.appspot.com",
+
+  messagingSenderId: "817809718177",
+
+  appId: "1:817809718177:web:f17234fb38e2b5909ae9e0",
+
+  measurementId: "G-W6JSW6TE54"
+
 };
 
 export const app = initializeApp(firebaseConfig);

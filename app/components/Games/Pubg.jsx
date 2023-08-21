@@ -176,9 +176,9 @@ export default function Pubg() {
                         entryfee={game.entryfee}
                         platform="mobile"
                         prize={game.pricePool}
-                        spots="100"
+                        spots={game.spots}
                         type={game.type?.toUpperCase()}
-                        gameMap={game.map}
+                        gameMap={game?.map}
                         mapName={game.map?.toUpperCase()}
                       ></MatchPubg>
                     ))
@@ -198,7 +198,7 @@ export default function Pubg() {
                       entryfee={game.entryfee}
                       platform="mobile"
                       prize={game.pricePool}
-                      spots="100"
+                      spots={game.spots}
                       // onClick={<RegisterForm />}
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}
@@ -221,7 +221,7 @@ export default function Pubg() {
                       entryfee={game.entryfee}
                       platform="mobile"
                       prize={game.pricePool}
-                      spots="100"
+                      spots={game.spots}
                       // onClick={<RegisterForm />}
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}

@@ -14,12 +14,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
+
 } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 const oswald = Oswald({
@@ -151,7 +146,7 @@ export default function MatchPubg({
           colorScheme="yellow"
           borderRadius="10px"
           bg="gray.800"
-          value={80}
+          value={spots}
           size={["xs", "sm"]}
         />
         <Flex py="10px" fontSize={["13px"]} color="gray.400">
