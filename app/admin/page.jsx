@@ -2,8 +2,17 @@
 import React from 'react'
 import Admin from '../components/Admin'
 
-export default function page() {
+export default function Apage() {
+  const [isClient, setIsClient] = React.useState(false)
+ 
+  React.useEffect(() => {
+    setIsClient(true)
+  }, [])
+ 
   return (
-    <Admin/>
+   <>
+   {isClient && <Admin/>}
+  
+   </>
   )
 }

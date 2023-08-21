@@ -1,28 +1,32 @@
+'use client'
 import { Flex, Box, Button, VStack, Text } from "@chakra-ui/react";
 import React from "react";
 import Formi from "./Form";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { db } from "@/app/firebase";
-import { doc, setDoc,updateDoc,collection,getDocs} from 'firebase/firestore'
+import {
+  doc,
+  setDoc,
+ 
+} from "firebase/firestore";
 import { UserAuth } from "@/app/context/AuthContext";
-import {useRouter} from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 export default function Admin() {
-  const {user}=UserAuth()
-  const [loading,setLoading]=React.useState(false)
+  const { user } = UserAuth();
+  const [loading, setLoading] = React.useState(false);
   const [gameList, setGameList] = React.useState([]);
-  const router=useRouter()
+  const router = useRouter();
   let currentUser = null;
 
-  if (user) {
-    currentUser = user.uid;
-  }
-  else{
-    router.push('/login')
-  }
-  const [games, setGames] = React.useState([]);
+  // if (user) {
+  //   currentUser = user.uid;
+  // } else {
+  //   router.push("/login");
+  // }
 
+  const [games, setGames] = React.useState([]);
   // React.useEffect(() => {
   //   // Define the Firestore collection reference
   //   const gamesCollection = collection(db, "games");
@@ -43,11 +47,11 @@ export default function Admin() {
 
   //   // Call the function to retrieve the games
   //   getGames();
-  // }, []); 
-// console.log(games)
+  // }, []);
+  // console.log(games)
   async function saveData(gameData) {
     try {
-      const gameDocRef = doc(db, "games", gameData.matchname); 
+      const gameDocRef = doc(db, "games", gameData.matchname);
       await setDoc(gameDocRef, gameData);
       console.log(`Successfully added ${gameData.game}`);
     } catch (err) {
@@ -55,23 +59,23 @@ export default function Admin() {
     }
   }
   const onSubmit = async (val, { resetForm }) => {
-      const gameData={
-        game:val.game,
-        matchname:val.matchname,
-        map:val.map,
-        type:val.type,
-        pricePool:val.pricePool,
-        entryfee:val.entryfee,
-        time:val.time
-      }
-      if (currentUser) {
-        await saveData(gameData);
-        setGameList([...gameList, gameData]); 
-      }
-  
-      resetForm();
-      setLoading(true)
-  }
+    const gameData = {
+      game: val.game,
+      matchname: val.matchname,
+      map: val.map,
+      type: val.type,
+      pricePool: val.pricePool,
+      entryfee: val.entryfee,
+      time: val.time,
+    };
+    if (currentUser) {
+      await saveData(gameData);
+      setGameList([...gameList, gameData]);
+    }
+
+    resetForm();
+    setLoading(true);
+  };
   const vaildateSchema = Yup.object({
     game: Yup.string().required("Game is required"),
     matchname: Yup.string().required("Match name is required"),
@@ -80,7 +84,7 @@ export default function Admin() {
     pricePool: Yup.string().required("Price pool is required"),
     entryfee: Yup.string().required("Entry fee is required"),
     time: Yup.string().required("Time is required"),
-    date:Yup.string().required("Date is required")
+    date: Yup.string().required("Date is required"),
   });
   return (
     <Flex bg="gray.900" justify="center">
@@ -90,26 +94,24 @@ export default function Admin() {
             game: "pubg",
             matchname: "",
             map: "",
-            type:"",
+            type: "",
             pricePool: "",
             entryfee: "",
-            date:"",
+            date: "",
             time: "",
           }}
-          validationSchema={ vaildateSchema}
+          validationSchema={vaildateSchema}
           onSubmit={onSubmit}
         >
           {(props) => (
             <Form>
               <VStack spacing={4} align="flex-start">
-             
                 <Field as="select" name="game">
-                  <option value="pubg" >Pubg</option>
+                  <option value="pubg">Pubg</option>
 
                   <option value="freefire">Freefire</option>
-
                 </Field>
-               
+
                 <Formi
                   label="Match Name"
                   id="matchname"
@@ -168,7 +170,6 @@ export default function Admin() {
           )}
         </Formik>
       </Box>
-    
     </Flex>
   );
 }
