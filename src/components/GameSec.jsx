@@ -41,7 +41,7 @@ export default function GameSec() {
             <Image
               src="pubg2.jpg"
               alt="pubg"
-              height={["48vh", "65vh"]}
+              height={["30vh", "65vh"]}
               borderRadius="30px"
               filter="grayscale(100%)"
               m={["auto", "0"]}

@@ -164,6 +164,20 @@ export default function Pubg() {
             </Flex>
             <TabPanels>
               <TabPanel>
+              <MatchPubg
+                        key={'index'}
+                        image={`/pubgsolo.jpg`}
+                        alt="hello"
+                        matchName={'asd'}
+                        time={'100'}
+                        entryfee={'24'}
+                        platform="sdf"
+                        prize='100'
+                        spots='50'
+                        type='solo'
+                        gameMap={'sdf'}
+                        mapName={'asd'}
+                      ></MatchPubg>
                 {solof?
                   (
                     solof.map((game, index) => (

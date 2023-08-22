@@ -29,9 +29,10 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
     <Flex
       justifyContent="center"
       align="center"
+      
     >
       {" "}
-      <Box bg="gray.200" w={["60vw", "90vw"]} p="20px" borderRadius="10px">
+      <Box  w={["60vw", "90vw"]} p="20px" borderRadius="10px" bg='gray.800' color='gray.100'>
         <Formik
           initialValues={{
             username: "",
@@ -50,7 +51,8 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 name="username"
                 type="text"
                 variant="filled"
-                color="black"
+                color="white"
+                bg='gray.800'
               />
 
               <Box mb={['0px',"10px"]}>
@@ -65,7 +67,8 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 type="text"
                 variant="filled"
                 mb="10px"
-                color="black"
+                color="white"
+                bg='gray.800'
               />
               <Formi
                 label="Phone Number"
@@ -74,7 +77,8 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 type="number"
                 variant="filled"
                 mb="10px"
-                color="black"
+                color="white"
+                bg='gray.800'
               />
               <Formi
                 label="Email Address"
@@ -82,20 +86,22 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 name="email"
                 type="email"
                 variant="filled"
-                color="black"
+                color="white"
+                bg='gray.800'
               />
               <Stack
                 mt="15px"
-                color="black"
+               color="white"
               >
                 {" "}
                 <HStack spacing='35px'> 
                   <Box>
-                    <Heading fontSize="13.5px">Type : {type}</Heading>
+                    <Heading fontSize="13.5px">Type : {type?.toUpperCase()}</Heading>
                   </Box>
 
-                  <Box color="black" >
-                    <Heading color="black" fontSize="14px">
+                  <Box  color="white"
+                >
+                    <Heading fontSize="14px">
                       Entry Fee : &#8377;{entryfee}
                     </Heading>{" "}
                   </Box>
@@ -106,7 +112,7 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                     </Box>
              </HStack>
               </Stack>
-              <Flex m="auto" mt="10px" color="black">
+              <Flex m="auto" mt="10px" color="white">
                 <Box>Contest BGMI Solo #1 will start on</Box>{" "}
               </Flex>
               <Button

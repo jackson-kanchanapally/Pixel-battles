@@ -64,7 +64,7 @@ export default function MatchPubg({
           alt={alt}
           width={["85px", "120px"]}
           borderRadius="10px"
-          ml={["", "-10"]}
+          ml={["30px", "-10"]}
         />
         <Box ml="10px"  w='290px'>
           <Text as="b" fontSize={["12px", "18"]} color="white" >
@@ -81,10 +81,10 @@ export default function MatchPubg({
       <HStack mt={["15px", "20px"]}>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "70px"]}
+          height={["55px", "70px"]}
           pt={["17px", "15px"]}
-          fontSize={["11px", "14px"]}
-          width={["80px", "110px"]}
+          fontSize={["9px", "14px"]}
+          width={["65px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
@@ -95,10 +95,10 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "70px"]}
+          height={["55px", "70px"]}
           pt={["17px", "15px"]}
-          fontSize={["11px", "14px"]}
-          width={["80px", "110px"]}
+          fontSize={["9px", "14px"]}
+          width={["65px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
@@ -109,10 +109,10 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "70px"]}
+          height={["55px", "70px"]}
           pt={["17px", "15px"]}
-          fontSize={["11px", "14px"]}
-          width={["80px", "110px"]}
+          fontSize={["9px", "14px"]}
+          width={["65px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
@@ -122,18 +122,19 @@ export default function MatchPubg({
           <Text color="yellow.400"> &#8377; {entryfee}</Text>
         </Box>
         <Box
-          bg="rgba(0, 0, 0, 0.80)"
-          height={["62px", "70px"]}
+          // bg="rgba(0, 0, 0, 0.80)"
+          height={["55px", "70px"]}
           pt={["17px", "15px"]}
-          fontSize={["11px", "14px"]}
-          width={["80px", "110px"]}
+          fontSize={["9px", "14px"]}
+          width={["65px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
+          mt={['-32px','-30px']}
         >
-          <Popover placement='auto'>
+          <Popover placement='auto' >
             <PopoverTrigger>
-              <Button>Join</Button>
+              <Button height={["53px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='white' bg='black'>Join</Button>
             </PopoverTrigger>
             <PopoverContent w={['60vw',"400px"]} borderRadius="10px">
               <RegisterForm type={type}  mapName={mapName} entryfee={entryfee}/>
