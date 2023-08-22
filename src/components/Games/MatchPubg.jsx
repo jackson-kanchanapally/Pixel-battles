@@ -35,7 +35,8 @@ export default function MatchPubg({
   spots,
   type,
   gameMap,
-  entryfee
+  entryfee,
+  dat
 }) {
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
@@ -48,10 +49,10 @@ export default function MatchPubg({
       bg="rgba(0, 0, 0, 0.50)"
       // bg='gray.900'
       // h={["210px", "290px"]}
-      h={["210px", "255px"]}
+      h={["168px", "255px"]}
       m="auto"
       mt="10px"
-      py="25px"
+      py={["15px","25px"]}
       w="100%"
       boxShadow="lg"
       borderRadius="15px"
@@ -64,24 +65,24 @@ export default function MatchPubg({
           alt={alt}
           width={["85px", "120px"]}
           borderRadius="10px"
-          ml={["30px", "-10"]}
+          ml={["34px", "-10"]}
         />
-        <Box ml="10px"  w='290px'>
+        <Box ml={["8px","10px" ]} w='290px'>
           <Text as="b" fontSize={["12px", "18"]} color="white" >
             {matchName}
           </Text>
           <Box color="gray.400"  w='290px'>
-            <Text fontSize={["9.5px", "15px"]}>
-              MAP : {mapName} &nbsp; &nbsp;|&nbsp;&nbsp; TIME :{" "}
-              {time}
+            <Text fontSize={["9px", "15px"]}>
+              MAP : {mapName}&nbsp;|&nbsp;TIME :
+              {time}&nbsp;|&nbsp;{dat}
             </Text>
           </Box>
         </Box>
       </HStack>
-      <HStack mt={["15px", "20px"]}>
+      <HStack mt={["10px", "20px"]}>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["55px", "70px"]}
+          height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -95,7 +96,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["55px", "70px"]}
+           height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -109,7 +110,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-          height={["55px", "70px"]}
+           height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -123,7 +124,7 @@ export default function MatchPubg({
         </Box>
         <Box
           // bg="rgba(0, 0, 0, 0.80)"
-          height={["55px", "70px"]}
+           height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -134,7 +135,7 @@ export default function MatchPubg({
         >
           <Popover placement='auto' >
             <PopoverTrigger>
-              <Button height={["53px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='white' bg='black'>Join</Button>
+              <Button  height={["48px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='white' bg='black'>Join</Button>
             </PopoverTrigger>
             <PopoverContent w={['60vw',"400px"]} borderRadius="10px">
               <RegisterForm type={type}  mapName={mapName} entryfee={entryfee}/>
@@ -142,7 +143,7 @@ export default function MatchPubg({
           </Popover>
         </Box>
       </HStack>
-      <Box w={["95%", "90%"]} py={["10px", "20px"]}>
+      <Box w={["100%", "90%"]} py={["8px", "20px"]}>
         <Progress
           colorScheme="yellow"
           borderRadius="10px"
@@ -150,7 +151,7 @@ export default function MatchPubg({
           value={spots}
           size={["xs", "sm"]}
         />
-        <Flex py="10px" fontSize={["13px"]} color="gray.400">
+        <Flex py="10px" fontSize={["10px","13px"]} color="gray.400">
           SPOTS LEFT : &nbsp;<Text color="yellow.400">{spots}</Text>
         </Flex>
       </Box>

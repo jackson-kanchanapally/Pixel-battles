@@ -65,6 +65,7 @@ export default function Admin() {
       pricePool: val.pricePool,
       entryfee: val.entryfee,
       time: val.time,
+      date:val.date
     };
     if (currentUser) {
       await saveData(gameData);
@@ -97,6 +98,7 @@ export default function Admin() {
             entryfee: "",
             date: "",
             time: "",
+            date:""
           }}
           validationSchema={vaildateSchema}
           onSubmit={onSubmit}

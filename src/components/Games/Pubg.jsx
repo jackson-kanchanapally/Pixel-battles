@@ -28,9 +28,6 @@ import Footer from "../Footer";
 import PopMatch from "./PopMatch";
 import { db } from "@/src/app/firebase";
 import {
-  doc,
-  setDoc,
-  updateDoc,
   collection,
   getDocs,
 } from "firebase/firestore";
@@ -40,6 +37,15 @@ export default function Pubg() {
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
   });
+  function formatDate(inputDate) {
+    const dateObj = new Date(inputDate);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    const month = monthNames[dateObj.getMonth()];
+    const day = String(dateObj.getDate()).padStart(2, '0');
+  
+    return `${month} ${day}`;
+  }
   const [games, setGames] = React.useState([]);
   const [solof, setSolof] = React.useState([]);
   const [sqdf, setSqdf] = React.useState([]);
@@ -164,20 +170,7 @@ export default function Pubg() {
             </Flex>
             <TabPanels>
               <TabPanel>
-              <MatchPubg
-                        key={'index'}
-                        image={`/pubgsolo.jpg`}
-                        alt="hello"
-                        matchName={'asd'}
-                        time={'100'}
-                        entryfee={'24'}
-                        platform="sdf"
-                        prize='100'
-                        spots='50'
-                        type='solo'
-                        gameMap={'sdf'}
-                        mapName={'asd'}
-                      ></MatchPubg>
+      
                 {solof?
                   (
                     solof.map((game, index) => (
@@ -194,6 +187,7 @@ export default function Pubg() {
                         type={game.type?.toUpperCase()}
                         gameMap={game?.map}
                         mapName={game.map?.toUpperCase()}
+                        dat={formatDate(game.date)}
                       ></MatchPubg>
                     ))
                   ):(
@@ -217,6 +211,7 @@ export default function Pubg() {
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}
                       mapName={game.map?.toUpperCase()}
+                      dat={formatDate(game.date)}
                     />
                   )):
                   (
@@ -236,7 +231,7 @@ export default function Pubg() {
                       platform="mobile"
                       prize={game.pricePool}
                       spots={game.spots}
-                      // onClick={<RegisterForm />}
+                      dat={formatDate(game.date)}
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}
                       mapName={game.map?.toUpperCase()}
