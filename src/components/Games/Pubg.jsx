@@ -67,15 +67,17 @@ export default function Pubg() {
     };
 
     getGames();
+   
+  }, []);
+  React.useEffect(()=>{
     const filterSolo = games?.filter((item) => item.type === "solo");
     setSolof(filterSolo);
     const filterSqd = games?.filter((item) => item.type === "squad");
     setSqdf(filterSqd);
-
+  
     const filterTdm = games?.filter((item) => item.type === "tdm");
     setTdmf(filterTdm);
-  }, [games]);
-
+  },[games])
   return (
     <Stack>
       <Stack h={["100vh", "100vh"]} overflowX="hidden">
@@ -171,7 +173,7 @@ export default function Pubg() {
             <TabPanels>
               <TabPanel>
       
-                {solof?
+                {games?
                   (
                     solof.map((game, index) => (
                       <MatchPubg
