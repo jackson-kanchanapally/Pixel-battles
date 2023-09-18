@@ -65,7 +65,8 @@ export default function Admin() {
       pricePool: val.pricePool,
       entryfee: val.entryfee,
       time: val.time,
-      date:val.date
+      date:val.date,
+      spots:100
     };
     if (currentUser) {
       await saveData(gameData);

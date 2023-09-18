@@ -180,7 +180,7 @@ export default function Pubg() {
                         key={index}
                         image={`/pubg${game.type}.jpg`}
                         alt="hello"
-                        matchName={game.matchname?.toUpperCase()}
+                        matchName={game.matchname}
                         time={game.time}
                         entryfee={game.entryfee}
                         platform="mobile"
@@ -203,7 +203,7 @@ export default function Pubg() {
                       key={index}
                       image={`/pubg${game.type}.jpg`}
                       alt="hello"
-                      matchName={game.matchname?.toUpperCase()}
+                      matchName={game.matchname}
                       time={game.time}
                       entryfee={game.entryfee}
                       platform="mobile"
@@ -227,7 +227,7 @@ export default function Pubg() {
                       key={index}
                       image={`/pubg${game.type}.jpg`}
                       alt="hello"
-                      matchName={game.matchname?.toUpperCase()}
+                      matchName={game.matchname}
                       time={game.time}
                       entryfee={game.entryfee}
                       platform="mobile"

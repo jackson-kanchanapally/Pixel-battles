@@ -1,46 +1,123 @@
-"use client";
 import React from "react";
 import { Form, Formik } from "formik";
-import { object, string, number, date, InferType } from "yup";
+import { db } from "@/src/app/firebase";
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { object, string } from "yup"; // Remove unused imports
+import axios from "axios";
 import {
   Flex,
   Box,
   Text,
   Button,
   HStack,
-  VStack,
   Heading,
-  Spacer,
   Stack,
 } from "@chakra-ui/react";
 
 import Formi from "@/src/components/Form";
-export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
-  const vaildateSchema = object({
+import { resolve } from "path";
+export default function RegisterForm({ type, entryfee, mapName, matchName }) {
+  const [paymentSuccess, setPaymentSuccess] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const validateSchema = object({
     email: string().email("Invalid email").required("Email is required"),
     username: string().required("Username is required"),
-    phno:string().required("Mobile number is required")
+    phno: string().required("Mobile number is required"),
   });
-  const onSubmit = async (val, { resetForm }) => {
-    alert(val);
+
+  const updateSpots = async () => {
+    try {
+      const spotDocRef = doc(db, "games", matchName);
+      const spotsDocSnap = await getDoc(spotDocRef);
+
+      if (!spotsDocSnap.exists) {
+        return;
+      }
+
+      const spots = spotsDocSnap.data().spots;
+      const spotsInt = parseInt(spots);
+      const updatedSpots = spotsInt - 1;
+
+      await updateDoc(spotDocRef, {
+        spots: String(updatedSpots),
+      });
+
+      console.log("Updated spots:", updatedSpots);
+      // resolve();
+    } catch (error) {
+      console.error("Error updating spots:", error);
+    }
+  };
+
+  const handleStripePayment = async () => {
+    try {
+      const amt = parseInt(entryfee * 100);
+      const { data } = await axios.post(
+        "/api/payment",
+        {
+          priceId: amt,
+          name: matchName,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      window.location.assign(data);
+      setPaymentSuccess(true);
+    } catch (err) {
+      console.log("Failed to initiate Stripe payment");
+    }
+  };
+  const ins = async (values) => {
+    try {
+      const userDocRef = doc(db, "registered", values.username) || null;
+      const userData = {
+        username: values.username,
+        phno: values.phno,
+        email: values.email,
+        instaid: values.instaid,
+      };
+
+      await setDoc(userDocRef, userData);
+      console.log(userDocRef);
+    } catch (err) {
+      console.error("Error creating user doc:", err);
+    }
+  };
+  const onSubmit = async (values) => {
+    try {
+      setLoading(true);
+      await handleStripePayment();
+      if (paymentSuccess) {
+        await updateSpots();
+        await ins(values);
+      }
+      
+      setLoading(false);
+    } catch (err) {
+      console.error("Submission failed:", err);
+    } 
   };
 
   return (
-    <Flex
-      justifyContent="center"
-      align="center"
-      
-    >
-      {" "}
-      <Box  w={["60vw", "90vw"]} p="20px" borderRadius="10px" bg='gray.800' color='gray.100'>
+    <Flex justifyContent="center" align="center">
+      <Box
+        w={["93w", "90vw"]}
+        p="20px"
+        borderRadius="10px"
+        bg="gray.800"
+        color="gray.100"
+      >
         <Formik
           initialValues={{
             username: "",
             phno: "",
             email: "",
-            instaid:"",
+            instaid: "",
           }}
-          validationSchema={vaildateSchema}
+          validationSchema={validateSchema}
           onSubmit={onSubmit}
         >
           {(props) => (
@@ -52,12 +129,12 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 type="text"
                 variant="filled"
                 color="white"
-                bg='gray.800'
+                bg="gray.800"
               />
 
-              <Box mb={['0px',"10px"]}>
+              <Box mb={["0px", "10px"]}>
                 <Text fontSize="12" p="2" color="gray.400">
-                  Copy your game username and paste here*
+                  Copy your game username and paste it here*
                 </Text>
               </Box>
               <Formi
@@ -68,17 +145,17 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 variant="filled"
                 mb="10px"
                 color="white"
-                bg='gray.800'
+                bg="gray.800"
               />
               <Formi
                 label="Phone Number"
-                id="phone number"
-                name="phone number"
-                type="number"
+                id="phno"
+                name="phno"
+                type="tel"
                 variant="filled"
                 mb="10px"
                 color="white"
-                bg='gray.800'
+                bg="gray.800"
               />
               <Formi
                 label="Email Address"
@@ -87,41 +164,39 @@ export default function RegisterForm({ type, gameMap, entryfee,mapName }) {
                 type="email"
                 variant="filled"
                 color="white"
-                bg='gray.800'
+                bg="gray.800"
               />
-              <Stack
-                mt="15px"
-               color="white"
-              >
-                {" "}
-                <HStack spacing='35px'> 
+              <Stack mt="15px" color="white">
+                <HStack spacing="35px">
                   <Box>
-                    <Heading fontSize="13.5px">Type : {type?.toUpperCase()}</Heading>
+                    <Heading fontSize="13.5px">
+                      Type : {type?.toUpperCase()}
+                    </Heading>
                   </Box>
-
-                  <Box  color="white"
-                >
+                  <Box>
                     <Heading fontSize="14px">
                       Entry Fee : &#8377;{entryfee}
-                    </Heading>{" "}
+                    </Heading>
                   </Box>
                 </HStack>
-             <HStack>
-             <Box>
-                      <Heading fontSize="13.5px">Map : {mapName}</Heading>{" "}
-                    </Box>
-             </HStack>
+                <HStack>
+                  <Box>
+                    <Heading fontSize="13.5px">Map : {mapName}</Heading>
+                  </Box>
+                </HStack>
               </Stack>
-              <Flex m="auto" mt="10px" color="white">
-                <Box>Contest BGMI Solo #1 will start on</Box>{" "}
-              </Flex>
+              <Box m="auto" mt="10px" color="white">
+                Contest BGMI Solo #1 will start on
+              </Box>
               <Button
                 _hover={{ bg: "yellow.300" }}
                 w="full"
                 bg="yellow.400"
                 mt="20px"
+                type="submit"
+                isLoading={loading}
               >
-                Submit
+                Register
               </Button>
             </Form>
           )}
