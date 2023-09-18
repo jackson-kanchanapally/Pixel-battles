@@ -6,12 +6,20 @@ import GameSec from "./GameSec";
 import Exp from "./Exp";
 import Tab from "./Table";
 import Quc from "./Quic";
+import {useRouter} from 'next/navigation'
 import Footer from "./Footer";
+import Link from "next/link";
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["500"],
 });
 export default function BxHome() {
+  const router=useRouter()
+const [loading,setLoading]=React.useState(false)
+const playNowBtn=()=>{
+  setLoading(true)
+  router.push("/game/pubg")
+}
   return (
     <Flex>
       <Box pos="absolute" height='100%' >
@@ -31,14 +39,18 @@ export default function BxHome() {
             <p>Welcome to PixelBattles, Your Ultimate</p>
             <p>Gaming Battlefield</p>
           </div>
-          <Button
+
+         <Button
             color="black"
             bgColor="#fff41f"
             rounded="none"
-            mt={["10", "10", "20", "60"]}
+            mt={["10", "10", "20", "60"]} 
+            isLoading={loading}
+            onClick={playNowBtn}
           >
             PLAY NOW
           </Button>
+
         </Box>
       </Box>
       <Box pos="relative" top={["600px","900px"]}>
