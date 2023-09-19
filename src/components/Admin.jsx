@@ -24,28 +24,6 @@ export default function Admin() {
     currentUser = user.uid;
   } 
   const [games, setGames] = React.useState([]);
-  // React.useEffect(() => {
-  //   // Define the Firestore collection reference
-  //   const gamesCollection = collection(db, "games");
-
-  //   // Use getDocs to retrieve data from the "games" collection
-  //   const getGames = async () => {
-  //     try {
-  //       const querySnapshot = await getDocs(gamesCollection);
-  //       const gamesData = [];
-  //       querySnapshot.forEach((doc) => {
-  //         gamesData.push(doc.data());
-  //       });
-  //       setGames(gamesData);
-  //     } catch (error) {
-  //       console.error("Error fetching games:", error);
-  //     }
-  //   };
-
-  //   // Call the function to retrieve the games
-  //   getGames();
-  // }, []);
-  // console.log(games)
   async function saveData(gameData) {
     try {
       const gameDocRef = doc(db, "games", gameData.matchname);
@@ -66,7 +44,7 @@ export default function Admin() {
       entryfee: val.entryfee,
       time: val.time,
       date:val.date,
-      spots:100
+      spots:val.spots
     };
     if (currentUser) {
       await saveData(gameData);
@@ -85,6 +63,7 @@ export default function Admin() {
     entryfee: Yup.string().required("Entry fee is required"),
     time: Yup.string().required("Time is required"),
     date: Yup.string().required("Date is required"),
+    spots: Yup.string().required("Spots is required"),
   });
   return (
     <Flex bg="gray.900" justify="center">
@@ -99,7 +78,8 @@ export default function Admin() {
             entryfee: "",
             date: "",
             time: "",
-            date:""
+            date:"",
+            spots:""
           }}
           validationSchema={vaildateSchema}
           onSubmit={onSubmit}
@@ -145,6 +125,13 @@ export default function Admin() {
                   label="Entry Fee"
                   id="entryfee"
                   name="entryfee"
+                  type="number"
+                  variant="filled"
+                />
+                <Formi
+                  label="Slots"
+                  id="slots"
+                  name="slots"
                   type="number"
                   variant="filled"
                 />

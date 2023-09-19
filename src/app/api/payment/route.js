@@ -24,8 +24,8 @@ export async function POST(request){
 
         ],
         mode:'payment',
-        success_url:"http://localhost:3000/success",  
-        cancel_url:"http://localhost:3000/game/pubg"
+        success_url:"https://pixel-battles-xe9c.vercel.app/success",  
+        cancel_url:"https://pixel-battles-xe9c.vercel.app/game/pubg"
     })
     return NextResponse.json(session.url)
 }

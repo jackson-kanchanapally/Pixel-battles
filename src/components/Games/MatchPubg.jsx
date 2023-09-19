@@ -185,12 +185,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-
-} from "@chakra-ui/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@chakra-ui/react";
 import { Oswald } from "@next/font/google";
 const oswald = Oswald({
   subsets: ["latin"],
@@ -211,13 +206,13 @@ export default function MatchPubg({
   type,
   gameMap,
   entryfee,
-  dat
+  dat,
 }) {
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
       ["width", "height", "src", "alt"].includes(prop),
   });
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Flex
       px="20px"
@@ -227,7 +222,7 @@ export default function MatchPubg({
       h={["168px", "255px"]}
       m="auto"
       mt="10px"
-      py={["15px","25px"]}
+      py={["15px", "25px"]}
       w="100%"
       boxShadow="lg"
       borderRadius="15px"
@@ -242,14 +237,13 @@ export default function MatchPubg({
           borderRadius="10px"
           ml={["34px", "-10"]}
         />
-        <Box ml={["8px","10px" ]} w='290px'>
-          <Text as="b" fontSize={["12px", "18"]} color="white" >
+        <Box ml={["8px", "10px"]} w="290px">
+          <Text as="b" fontSize={["12px", "18"]} color="white">
             {matchName?.toUpperCase()}
           </Text>
-          <Box color="gray.400"  w='290px'>
+          <Box color="gray.400" w="290px">
             <Text fontSize={["9px", "15px"]}>
-              MAP : {mapName}&nbsp;|&nbsp;TIME :
-              {time}&nbsp;|&nbsp;{dat}
+              MAP : {mapName}&nbsp;|&nbsp;TIME :{time}&nbsp;|&nbsp;{dat}
             </Text>
           </Box>
         </Box>
@@ -271,7 +265,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-           height={["50px", "70px"]}
+          height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -285,7 +279,7 @@ export default function MatchPubg({
         </Box>
         <Box
           bg="rgba(0, 0, 0, 0.80)"
-           height={["50px", "70px"]}
+          height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
@@ -299,42 +293,58 @@ export default function MatchPubg({
         </Box>
         <Box
           // bg="rgba(0, 0, 0, 0.80)"
-           height={["50px", "70px"]}
+          height={["50px", "70px"]}
           pt={["17px", "15px"]}
           fontSize={["9px", "14px"]}
           width={["65px", "110px"]}
           borderRadius="10px"
           align="center"
           color="white"
-          mt={['-32px','-30px']}
+          mt={["-32px", "-30px"]}
         >
-         <Button onClick={onOpen}  height={["48px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='white' bg='black' isDisabled={spots==0?true:false}>{spots==0?"Full":"Join"}</Button>
+          <Button
+            onClick={onOpen}
+            height={["48px", "70px"]}
+            width={["65px", "110px"]}
+            fontSize={["15px", "18px"]}
+            color="white"
+            bg="black"
+            isDisabled={spots == 0 ? true : false}
+          >
+            {spots == 0 ? "Full" : "Join"}
+          </Button>
 
-         <Modal isOpen={isOpen} onClose={onClose} >
-        <ModalOverlay />
-        <ModalContent bg='gray.700'>
-          <ModalHeader color='white'>Registration Form</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-          <RegisterForm type={type}  mapName={mapName} entryfee={entryfee} matchName={matchName}/>
-          </ModalBody>
-
-        </ModalContent>
-      </Modal>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent w={['90w','']}>
+              <ModalHeader>Registration Form</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <RegisterForm
+                  type={type}
+                  mapName={mapName}
+                  entryfee={entryfee}
+                  matchName={matchName}
+                />
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Box>
       </HStack>
-      {spots&&<Box w={["100%", "90%"]} py={["8px", "20px"]}>
-        <Progress
-          colorScheme="yellow"
-          borderRadius="10px"
-          bg="gray.800"
-          value={100-spots}
-          size={["xs", "sm"]}
-        />
-        <Flex py="10px" fontSize={["10px","13px"]} color="gray.400">
-          SPOTS LEFT : &nbsp;<Text color="yellow.400">{spots}</Text>
-        </Flex>
-      </Box>}
+      {spots && (
+        <Box w={["100%", "90%"]} py={["8px", "20px"]}>
+          <Progress
+            colorScheme="yellow"
+            borderRadius="10px"
+            bg="gray.800"
+            value={100 - spots}
+            size={["xs", "sm"]}
+          />
+          <Flex py="10px" fontSize={["10px", "13px"]} color="gray.400">
+            SPOTS LEFT : &nbsp;<Text color="yellow.400">{spots}</Text>
+          </Flex>
+        </Box>
+      )}
     </Flex>
   );
 }
