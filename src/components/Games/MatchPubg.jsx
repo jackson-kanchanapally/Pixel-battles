@@ -316,7 +316,7 @@ export default function MatchPubg({
 
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent w={['90w','']}>
+            <ModalContent w={['90w','']} color='white' bg='RGBA(0, 0, 0, 0.92)'>
               <ModalHeader>Registration Form</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
