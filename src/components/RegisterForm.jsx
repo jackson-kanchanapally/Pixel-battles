@@ -90,10 +90,9 @@ export default function RegisterForm({ type, entryfee, mapName, matchName }) {
     try {
       setLoading(true);
       await handleStripePayment();
-      if (paymentSuccess) {
+     
         await updateSpots();
         await ins(values);
-      }
       
       setLoading(false);
     } catch (err) {
