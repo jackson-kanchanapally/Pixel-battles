@@ -90,14 +90,14 @@ export default function RegisterForm({ type, entryfee, mapName, matchName }) {
     try {
       setLoading(true);
       await handleStripePayment();
-     
-        await updateSpots();
-        await ins(values);
-      
+
+      await updateSpots();
+      await ins(values);
+
       setLoading(false);
     } catch (err) {
       console.error("Submission failed:", err);
-    } 
+    }
   };
 
   return (
