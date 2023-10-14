@@ -70,12 +70,12 @@ export default function Pubg() {
    
   }, []);
   React.useEffect(()=>{
-    const filterSolo = games?.filter((item) => item.type === "solo");
+    const filterSolo = games?.filter((item) => item.type.toUpperCase() === "SOLO");
     setSolof(filterSolo);
-    const filterSqd = games?.filter((item) => item.type === "squad");
+    const filterSqd = games?.filter((item) => item.type.toUpperCase() === "SQUAD");
     setSqdf(filterSqd);
   
-    const filterTdm = games?.filter((item) => item.type === "tdm");
+    const filterTdm = games?.filter((item) => item.type.toUpperCase() === "TDM");
     setTdmf(filterTdm);
   },[games])
   return (
