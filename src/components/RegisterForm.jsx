@@ -1,9 +1,10 @@
 import React from "react";
-import { Form, Formik } from "formik";
-import { db } from "@/src/app/firebase";
+import { Form, Formik, ErrorMessage } from "formik";
+import { db,st } from "@/src/app/firebase";
+import { ref, uploadBytes } from "firebase/storage";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
-import { object, string } from "yup"; // Remove unused imports
-import axios from "axios";
+import { object, string } from "yup";
+import {useRouter} from 'next/navigation'
 import {
   Flex,
   Box,
@@ -15,96 +16,95 @@ import {
 } from "@chakra-ui/react";
 
 import Formi from "@/src/components/Form";
-import { resolve } from "path";
-export default function RegisterForm({ type, entryfee, mapName, matchName }) {
+import Paypage from "../components/Paypage";
+const updateSpots = async () => {
+  try {
+    const spotDocRef = doc(db, "games", matchName);
+    const spotsDocSnap = await getDoc(spotDocRef);
+
+    if (!spotsDocSnap.exists) {
+      return;
+    }
+
+    const spots = spotsDocSnap.data().spots;
+    const spotsInt = parseInt(spots);
+    const updatedSpots = spotsInt - 1;
+
+    await updateDoc(spotDocRef, {
+      spots: String(updatedSpots),
+    });
+  } catch (error) {
+    console.error("Error updating spots:", error);
+  }
+};
+const uploadQR = async (pdfData, filename, userUID) => {
+  const storageRef = ref(st, `paymentDone/${userUID}${filename}`);
+  const metadata = {
+    contentType: "image/jpeg",
+  };
+  try {
+    await uploadBytes(storageRef, pdfData, metadata);
+  } catch (err) {
+    console.log("error ", err);
+  }
+};
+
+const ins = async (values) => {
+  try {
+    const userDocRef = doc(db, "registered", values.username) || null;
+    const userData = {
+      username: values.username,
+      phno: values.phno,
+      email: values.email,
+      instaid: values.instaid,
+      paymentDone:true
+    };
+    await setDoc(userDocRef, userData);
+  } catch (err) {
+    console.error("Error creating user doc:", err);
+  }
+};
+export default function RegisterForm({
+  type,
+  entryfee,
+  mapName,
+  matchName,
+  upiid,
+}) {
+  const router=useRouter()
   const [paymentSuccess, setPaymentSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const validateSchema = object({
     email: string().email("Invalid email").required("Email is required"),
     username: string().required("Username is required"),
     phno: string().required("Mobile number is required"),
+    paySc: string().required(
+      "*Please pay the entry fee and Upload the screen shot"
+    ),
   });
 
-  const updateSpots = async () => {
-    try {
-      const spotDocRef = doc(db, "games", matchName);
-      const spotsDocSnap = await getDoc(spotDocRef);
 
-      if (!spotsDocSnap.exists) {
-        return;
-      }
 
-      const spots = spotsDocSnap.data().spots;
-      const spotsInt = parseInt(spots);
-      const updatedSpots = spotsInt - 1;
-
-      await updateDoc(spotDocRef, {
-        spots: String(updatedSpots),
-      });
-
-      console.log("Updated spots:", updatedSpots);
-      // resolve();
-    } catch (error) {
-      console.error("Error updating spots:", error);
-    }
-  };
-
-  const handleStripePayment = async () => {
-    try {
-      const amt = parseInt(entryfee * 100);
-      const { data } = await axios.post(
-        "/api/payment",
-        {
-          priceId: amt,
-          name: matchName,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      window.location.assign(data);
-      setPaymentSuccess(true);
-    } catch (err) {
-      console.log("Failed to initiate Stripe payment");
-    }
-  };
-  const ins = async (values) => {
-    try {
-      const userDocRef = doc(db, "registered", values.username) || null;
-      const userData = {
-        username: values.username,
-        phno: values.phno,
-        email: values.email,
-        instaid: values.instaid,
-      };
-
-      await setDoc(userDocRef, userData);
-      console.log(userDocRef);
-    } catch (err) {
-      console.error("Error creating user doc:", err);
-    }
-  };
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, { resetForm }) => {
     try {
       setLoading(true);
-      await handleStripePayment();
-      if (paymentSuccess) {
-        await updateSpots();
-        await ins(values);
-      }
-      
+      console.log(values.paySc);
+      const filename = `${values.username}.jpg`;
       setLoading(false);
+      await uploadQR(values.paySc, filename, matchName);
+      await ins(values)
+      await updateSpots()
+      resetForm()
+      router.push("/success")
     } catch (err) {
       console.error("Submission failed:", err);
-    } 
+    }
   };
 
   return (
     <Flex justifyContent="center" align="center">
       <Box
-        w={["60vw", "90vw"]}
+        w={["90vw", "90vw"]}
         p="20px"
         borderRadius="10px"
         bg="gray.800"
@@ -116,11 +116,13 @@ export default function RegisterForm({ type, entryfee, mapName, matchName }) {
             phno: "",
             email: "",
             instaid: "",
+            paySc: null,
+            paymentDone: false,
           }}
           validationSchema={validateSchema}
           onSubmit={onSubmit}
         >
-          {(props) => (
+          {({setFieldValue}) => (
             <Form>
               <Formi
                 label="Username"
@@ -184,6 +186,36 @@ export default function RegisterForm({ type, entryfee, mapName, matchName }) {
                     <Heading fontSize="13.5px">Map : {mapName}</Heading>
                   </Box>
                 </HStack>
+                <Stack mt="20px">
+                  <Paypage upiid={upiid}/>
+                  <Button
+                    as="label"
+                    htmlFor="paySc"
+                    bg="gray.600"
+                    mt="20px"
+                    mb="20px"
+                  >
+                    Submit the Screenshot
+                  </Button>
+                  <input
+                    type="file"
+                    id="paySc"
+                    name="paySc"
+                    style={{ display: "none" }}
+                    onChange={(event) => {
+                      setFieldValue("paySc", event.target.files[0]);
+                    }}
+                  />
+                  <ErrorMessage name="paySc">
+                    {(msg) => (
+                      <div>
+                        <Text color="red.500" fontSize="sm">
+                          {msg}
+                        </Text>
+                      </div>
+                    )}
+                  </ErrorMessage>
+                </Stack>
               </Stack>
               <Box m="auto" mt="10px" color="white">
                 Contest BGMI Solo #1 will start on

@@ -188,6 +188,7 @@ export default function Pubg() {
                         spots={game.spots}
                         type={game.type?.toUpperCase()}
                         gameMap={game?.map}
+                        upiid={game.upiid}
                         mapName={game.map?.toUpperCase()}
                         dat={formatDate(game.date)}
                       ></MatchPubg>
@@ -212,6 +213,7 @@ export default function Pubg() {
                       // onClick={<RegisterForm />}
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}
+                      upiid={game.upiid}
                       mapName={game.map?.toUpperCase()}
                       dat={formatDate(game.date)}
                     />
@@ -236,6 +238,7 @@ export default function Pubg() {
                       dat={formatDate(game.date)}
                       type={game.type?.toUpperCase()}
                       gameMap={game.map}
+                      upiid={game.upiid}
                       mapName={game.map?.toUpperCase()}
                     />
                   ))

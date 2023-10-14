@@ -1,15 +1,12 @@
-'use client'
+"use client";
 import { Flex, Box, Button, VStack, Text } from "@chakra-ui/react";
 import React from "react";
 import Formi from "./Form";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { db } from "@/src/app/firebase";
-import {
-  doc,
-  setDoc,
- 
-} from "firebase/firestore";
+import { db, st } from "@/src/app/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
 import { UserAuth } from "@/src/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
@@ -22,40 +19,19 @@ export default function Admin() {
 
   if (user) {
     currentUser = user.uid;
-  } 
+  }
   const [games, setGames] = React.useState([]);
-  // React.useEffect(() => {
-  //   // Define the Firestore collection reference
-  //   const gamesCollection = collection(db, "games");
 
-  //   // Use getDocs to retrieve data from the "games" collection
-  //   const getGames = async () => {
-  //     try {
-  //       const querySnapshot = await getDocs(gamesCollection);
-  //       const gamesData = [];
-  //       querySnapshot.forEach((doc) => {
-  //         gamesData.push(doc.data());
-  //       });
-  //       setGames(gamesData);
-  //     } catch (error) {
-  //       console.error("Error fetching games:", error);
-  //     }
-  //   };
-
-  //   // Call the function to retrieve the games
-  //   getGames();
-  // }, []);
-  // console.log(games)
   async function saveData(gameData) {
     try {
       const gameDocRef = doc(db, "games", gameData.matchname);
+
       await setDoc(gameDocRef, gameData);
-      console.log(`Successfully added ${gameData.game}`);
     } catch (err) {
       console.error(`Error adding ${gameData.game}:`, err);
     }
   }
-  
+
   const onSubmit = async (val, { resetForm }) => {
     const gameData = {
       game: val.game,
@@ -65,8 +41,9 @@ export default function Admin() {
       pricePool: val.pricePool,
       entryfee: val.entryfee,
       time: val.time,
-      date:val.date,
-      spots:100
+      date: val.date,
+      spots: 100,
+      upiid: val.upiid,
     };
     if (currentUser) {
       await saveData(gameData);
@@ -85,9 +62,10 @@ export default function Admin() {
     entryfee: Yup.string().required("Entry fee is required"),
     time: Yup.string().required("Time is required"),
     date: Yup.string().required("Date is required"),
+    upiid: Yup.string().required("Upi id is required")
   });
   return (
-    <Flex bg="gray.900" justify="center">
+    <Flex bg="gray.900" justify="center" color="gray.900">
       <Box bg="gray.200" p={6} rounded="md" w={"500px"} mt="50px">
         <Formik
           initialValues={{
@@ -99,16 +77,27 @@ export default function Admin() {
             entryfee: "",
             date: "",
             time: "",
-            date:""
+            date: "",
+            // upiQr: null,
+            upiid: "",
           }}
           validationSchema={vaildateSchema}
           onSubmit={onSubmit}
         >
-          {(props) => (
+          {({ setFieldValue, values }) => (
             <Form>
               <VStack spacing={4} align="flex-start">
-                <Field as="select" name="game">
-                  <option value="pubg">Pubg</option>
+                <Field
+                  style={{ backgroundColor: "white", color: "black" }}
+                  as="select"
+                  name="game"
+                >
+                  <option
+                    value="pubg"
+                    style={{ backgroundColor: "white", color: "black" }}
+                  >
+                    Pubg
+                  </option>
 
                   <option value="freefire">Freefire</option>
                 </Field>
@@ -162,7 +151,13 @@ export default function Admin() {
                   type="time"
                   variant="filled"
                 />
-
+                <Formi
+                  label="upi Id"
+                  id="upiid"
+                  name="upiid"
+                  type="text"
+                  variant="filled"
+                />
                 <Button type="submit" bg="yellow.400" w="full">
                   Add Match
                 </Button>

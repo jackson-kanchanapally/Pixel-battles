@@ -16,9 +16,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false); 
   const router = useRouter();
 
-  // React.useEffect(() => {
-  //   setLoading(false); 
-  // }, []);
   const vaildateSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password:Yup.string().required("Password is required")
@@ -37,7 +34,7 @@ export default function Login() {
       })
   }
   return (
-    <Flex bg="gray.800" align="center" justify="center" h="100vh">
+    <Flex bg="gray.800" align="center" justify="center" h="100vh" color="gray.900">
       <Box bg="gray.200" p={6} rounded="md" w={80}>
         <Formik
           initialValues={{
@@ -53,6 +50,7 @@ export default function Login() {
                 <Formi
                   label="Email Address"
                   id="email"
+                  color="gray.900"
                   name="email"
                   type="email"
                   variant="filled"
@@ -60,6 +58,7 @@ export default function Login() {
                 <Formi
                   label="Password"
                   id="password"
+                  color="gray.900"
                   name="password"
                   type="password"
                   variant="filled"

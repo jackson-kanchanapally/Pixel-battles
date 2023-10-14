@@ -211,7 +211,8 @@ export default function MatchPubg({
   type,
   gameMap,
   entryfee,
-  dat
+  dat,
+  upiid
 }) {
   const Img = chakra(Image, {
     shouldForwardProp: (prop) =>
@@ -316,7 +317,7 @@ export default function MatchPubg({
           <ModalHeader>Registration Form</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <RegisterForm type={type}  mapName={mapName} entryfee={entryfee} matchName={matchName}/>
+          <RegisterForm type={type}  mapName={mapName} entryfee={entryfee} matchName={matchName} upiid={upiid}/>
           </ModalBody>
 
         </ModalContent>
