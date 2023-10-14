@@ -76,65 +76,19 @@ export default function Freefire() {
                   FREE FIRE
                 </Text>
               </HStack>
-              <TabList
-                // bg="rgba(0, 0, 0, 0.80)"
-                width={["90vw", "600px"]}
-                borderRadius="10px"
-                color="white"
+              <Flex
+                justify={"center"}
+                alignItems={"center"}
+                m="auto"
+                fontSize={"30px"}
+                color="gray.100"
+                fontWeight="bold"
               >
-                <Tab
-                  w="300px"
-                  borderLeftRadius="10px"
-                  _selected={{ color: "yellow.400" }}
-                >
-                  SOLO
-                </Tab>
-                <Tab w="300px" _selected={{ color: "yellow.400" }}>
-                  SQUAD
-                </Tab>
-              </TabList>
+                <Text p="80px" mt="40px">
+                  Sorry !! We are still working on free fire
+                </Text>
+              </Flex>
             </Flex>
-            <TabPanels>
-              <TabPanel>
-                <MatchPubg
-                  image={ffsolo}
-                  alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  mapName="erangel"
-                  time="12:00"
-                  entryFee="100"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                />
-              </TabPanel>
-              <TabPanel>
-                <MatchPubg
-                  image={""}
-                  alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  mapName="erangel"
-                  time="12:00"
-                  entryFee="100"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                />
-              </TabPanel>
-              <TabPanel>
-                <MatchPubg
-                  image={""}
-                  alt="hello"
-                  matchName="Solo asdf asdf asdfas"
-                  mapName="erangel"
-                  time="12:00"
-                  entryFee="100"
-                  platform="mobile"
-                  prize="1000"
-                  spots="100"
-                />
-              </TabPanel>
-            </TabPanels>
           </Tabs>
         </Flex>
       </Stack>
