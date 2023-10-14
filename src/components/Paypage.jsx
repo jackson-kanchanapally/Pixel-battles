@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import {
   Box,
   Flex,
@@ -12,6 +12,7 @@ import {
   HStack,
   Spinner,
 } from "@chakra-ui/react";
+import { QRCodeCanvas } from "qrcode.react";
 import { UserAuth } from "@/src/app/context/AuthContext";
 import { Formik, Field, Form } from "formik";
 import { collection, getDocs } from "firebase/firestore";
@@ -30,22 +31,13 @@ const uploadQR = async (pdfData, filename, userUID) => {
     console.log("error ", err);
   }
 };
-export default function Paypage({upiid}) {
-  const placeholder = "aggg";
-  const { onCopy, value, setValue, hasCopied } = useClipboard(upiid);
+export default function Paypage({ upiid, entryfee }) {
+  // const placeholder = "aggg";
+  // const { onCopy, value, setValue, hasCopied } = useClipboard(upiid);
 
-  const Img = chakra(Image, {
-    shouldForwardProp: (prop) =>
-      ["width", "height", "src", "alt"].includes(prop),
-  });
-  const [imageURL, setImageURL] = React.useState("");
   const [games, setGames] = React.useState([]);
   const [players, setPlayers] = React.useState([]);
-  let currentUser = null;
-  const { user } = UserAuth();
-  if (user) {
-    currentUser = user.uid;
-  }
+
   React.useEffect(() => {
     const gamesCollection = collection(db, "games");
     const playCollection = collection(db, "registered");
@@ -77,11 +69,19 @@ export default function Paypage({upiid}) {
     getGames();
     getPlayers();
   }, []);
-  const onSubmit = async (val, { resetForm }) => {
-    const filename = `${val}qr.jpg`;
-    await saveData(gameData);
-    await uploadQR(val.upiQr, filename, val.matchname);
-  };
+
+  const name = "pixelbattles";
+  const qrData = `upi://pay?pa=${upiid}&pn=${name}&am=${entryfee}&mc=0000&tr=123456789&tn=test`;
+  const qrcode = (
+    <QRCodeCanvas
+      id="qrCode"
+      value={qrData}
+      size={200}
+      bgColor={"white"}
+      level={"H"}
+    />
+  );
+ 
   useEffect(() => {
     if (games.length > 0) {
       const storageRef = ref(st, `qrs/`);
@@ -108,7 +108,7 @@ export default function Paypage({upiid}) {
         alignItems="center"
       >
         <Box w="200px" height="200px" bg="gray.300" borderRadius="15px">
-          {imageURL ? (
+          {/* {imageURL ? (
             <Img src={imageURL} w="200px" height="200px" />
           ) : (
             <Spinner
@@ -119,24 +119,23 @@ export default function Paypage({upiid}) {
               size="lg"
               
             />
-          )}
+          )} */}
+          {qrcode}
         </Box>
-        <HStack mt="20px">
-        <Text
-          placeholder={placeholder}
-          as="span"
-          width="100%"
-          color="gray.900"
-        >
-          <Text as="kbd">
-          {value}
+        {/* <HStack mt="20px">
+          <Text
+            placeholder={placeholder}
+            as="span"
+            width="100%"
+            color="gray.900"
+          >
+            <Text as="kbd">{value}</Text>
           </Text>
-        </Text>
           <BiSolidCopyAlt
             onClick={onCopy}
             color={hasCopied ? "green" : "black"}
           />
-        </HStack>
+        </HStack> */}
         <Text
           textAlign="justify"
           fontSize="12px"

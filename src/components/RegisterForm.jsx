@@ -187,7 +187,7 @@ export default function RegisterForm({
                   </Box>
                 </HStack>
                 <Stack mt="20px">
-                  <Paypage upiid={upiid}/>
+                  <Paypage upiid={upiid} entryfee={entryfee}/>
                   <Button
                     as="label"
                     htmlFor="paySc"
