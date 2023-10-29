@@ -4,6 +4,8 @@ import { db,st } from "@/src/app/firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { object, string } from "yup";
+import UTRex from '@/public/UTRex.jpg'
+import Image from "next/image";
 import {useRouter} from 'next/navigation'
 import {
   Flex,
@@ -13,6 +15,7 @@ import {
   HStack,
   Heading,
   Stack,
+  chakra
 } from "@chakra-ui/react";
 
 import Formi from "@/src/components/Form";
@@ -100,7 +103,10 @@ export default function RegisterForm({
       console.error("Submission failed:", err);
     }
   };
-
+  const Img = chakra(Image, {
+    shouldForwardProp: (prop) =>
+      ["width", "height", "src", "alt"].includes(prop),
+  });
   return (
     <Flex justifyContent="center" align="center">
       <Box
@@ -207,7 +213,7 @@ export default function RegisterForm({
                       setFieldValue("paySc", event.target.files[0]);
                     }}
                   /> */}
-                  <ErrorMessage name="paySc">
+                  {/* <ErrorMessage name="paySc">
                     {(msg) => (
                       <div>
                         <Text color="red.500" fontSize="sm">
@@ -215,7 +221,8 @@ export default function RegisterForm({
                         </Text>
                       </div>
                     )}
-                  </ErrorMessage>
+                  </ErrorMessage> */}
+                
                   <Formi
                       label="UTR number"
                       id="utr"
@@ -225,10 +232,14 @@ export default function RegisterForm({
                       color="white"
                       bg="gray.800"
                   />
+                    <Box >
+                    <Img w="80%" m="auto" src={UTRex}/>
+                    <Text my="20px">Note: Copy the UTR number on the complition of the payment and paste here</Text>
+                    </Box>
                 </Stack>
               </Stack>
               <Box m="auto" mt="10px" color="white">
-                Contest BGMI Solo #1 will start on
+                {/* Contest BGMI Solo #1 will start on */}
               </Box>
               <Button
                 _hover={{ bg: "yellow.300" }}
