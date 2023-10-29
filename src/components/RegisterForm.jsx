@@ -72,12 +72,12 @@ export default function RegisterForm({
   upiid,
 }) {
   const router=useRouter()
-  const [paymentSuccess, setPaymentSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const validateSchema = object({
     email: string().email("Invalid email").required("Email is required"),
     username: string().required("Username is required"),
     phno: string().required("Mobile number is required"),
+    utr: string().required("UTR number is required"),
     paySc: string().required(
       "*Please pay the entry fee and Upload the screen shot"
     ),
@@ -118,6 +118,7 @@ export default function RegisterForm({
             instaid: "",
             paySc: null,
             paymentDone: false,
+            utr:""
           }}
           validationSchema={validateSchema}
           onSubmit={onSubmit}
@@ -188,7 +189,7 @@ export default function RegisterForm({
                 </HStack>
                 <Stack mt="20px">
                   <Paypage upiid={upiid} entryfee={entryfee}/>
-                  <Button
+                  {/* <Button
                     as="label"
                     htmlFor="paySc"
                     bg="gray.600"
@@ -205,7 +206,7 @@ export default function RegisterForm({
                     onChange={(event) => {
                       setFieldValue("paySc", event.target.files[0]);
                     }}
-                  />
+                  /> */}
                   <ErrorMessage name="paySc">
                     {(msg) => (
                       <div>
@@ -215,6 +216,15 @@ export default function RegisterForm({
                       </div>
                     )}
                   </ErrorMessage>
+                  <Formi
+                      label="UTR number"
+                      id="utr"
+                      name="utr"
+                      type="text"
+                      variant="filled"
+                      color="white"
+                      bg="gray.800"
+                  />
                 </Stack>
               </Stack>
               <Box m="auto" mt="10px" color="white">

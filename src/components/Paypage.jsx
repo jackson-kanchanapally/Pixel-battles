@@ -18,22 +18,10 @@ import { Formik, Field, Form } from "formik";
 import { collection, getDocs } from "firebase/firestore";
 import { db, st } from "@/src/app/firebase";
 import { ref, getDownloadURL, listAll, uploadBytes } from "firebase/storage";
-import { BiSolidCopyAlt } from "react-icons/bi";
 
-const uploadQR = async (pdfData, filename, userUID) => {
-  const storageRef = ref(st, `paymentDone/${userUID}${filename}`);
-  const metadata = {
-    contentType: "image/jpeg",
-  };
-  try {
-    await uploadBytes(storageRef, pdfData, metadata);
-  } catch (err) {
-    console.log("error ", err);
-  }
-};
+
+
 export default function Paypage({ upiid, entryfee }) {
-  // const placeholder = "aggg";
-  // const { onCopy, value, setValue, hasCopied } = useClipboard(upiid);
 
   const [games, setGames] = React.useState([]);
   const [players, setPlayers] = React.useState([]);
@@ -82,22 +70,6 @@ export default function Paypage({ upiid, entryfee }) {
     />
   );
  
-  useEffect(() => {
-    if (games.length > 0) {
-      const storageRef = ref(st, `qrs/`);
-      listAll(storageRef)
-        .then((res) => {
-          res.items.forEach((item) => {
-            getDownloadURL(item).then((url) => {
-              setImageURL(url);
-            });
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [games]);
   return (
     <Flex bg="gray.900" justify="center" alignContent="center">
       <Flex
@@ -108,34 +80,10 @@ export default function Paypage({ upiid, entryfee }) {
         alignItems="center"
       >
         <Box w="200px" height="200px" bg="gray.300" borderRadius="15px">
-          {/* {imageURL ? (
-            <Img src={imageURL} w="200px" height="200px" />
-          ) : (
-            <Spinner
-              m="85px"
-              color="yellow.400"
-              thickness="3px"
-              emptyColor="gray.600"
-              size="lg"
-              
-            />
-          )} */}
+      
           {qrcode}
         </Box>
-        {/* <HStack mt="20px">
-          <Text
-            placeholder={placeholder}
-            as="span"
-            width="100%"
-            color="gray.900"
-          >
-            <Text as="kbd">{value}</Text>
-          </Text>
-          <BiSolidCopyAlt
-            onClick={onCopy}
-            color={hasCopied ? "green" : "black"}
-          />
-        </HStack> */}
+   
         <Text
           textAlign="justify"
           fontSize="12px"
