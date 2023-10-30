@@ -4,23 +4,11 @@ import {
   Box,
   Flex,
   Text,
-  chakra,
-  useClipboard,
-  Input,
-  Button,
-  Image,
-  HStack,
-  Spinner,
+
 } from "@chakra-ui/react";
 import { QRCodeCanvas } from "qrcode.react";
-import { UserAuth } from "@/src/app/context/AuthContext";
-import { Formik, Field, Form } from "formik";
 import { collection, getDocs } from "firebase/firestore";
-import { db, st } from "@/src/app/firebase";
-import { ref, getDownloadURL, listAll, uploadBytes } from "firebase/storage";
-
-
-
+import { db } from "@/src/app/firebase";
 export default function Paypage({ upiid, entryfee }) {
 
   const [games, setGames] = React.useState([]);

@@ -9,6 +9,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { UserAuth } from "@/src/app/context/AuthContext";
 import { useRouter } from "next/navigation";
+import Fetcht from "./FetchData/Fetcht";
 
 export default function Admin() {
   const { user } = UserAuth();
@@ -65,7 +66,7 @@ export default function Admin() {
     upiid: Yup.string().required("Upi id is required")
   });
   return (
-    <Flex bg="gray.900" justify="center" color="gray.900">
+    <Flex bg="gray.900" justify="center" alignItems='center' color="gray.900" flexDirection="column">
       <Box bg="gray.200" p={6} rounded="md" w={"500px"} mt="50px">
         <Formik
           initialValues={{
@@ -78,7 +79,6 @@ export default function Admin() {
             date: "",
             time: "",
             date: "",
-            // upiQr: null,
             upiid: "",
           }}
           validationSchema={vaildateSchema}
@@ -166,6 +166,9 @@ export default function Admin() {
           )}
         </Formik>
       </Box>
+      <Flex h="full" width="full" bg="gray.800" mt="50px" justify="center" color="gray.100">
+        <Fetcht/>
+      </Flex>
     </Flex>
   );
 }

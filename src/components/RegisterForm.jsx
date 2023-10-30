@@ -85,9 +85,6 @@ export default function RegisterForm({
       "*Please pay the entry fee and Upload the screen shot"
     ),
   });
-
-
-
   const onSubmit = async (values, { resetForm }) => {
     try {
       setLoading(true);
@@ -124,7 +121,8 @@ export default function RegisterForm({
             instaid: "",
             paySc: null,
             paymentDone: false,
-            utr:""
+            utr:"",
+            matchName:matchName
           }}
           validationSchema={validateSchema}
           onSubmit={onSubmit}
