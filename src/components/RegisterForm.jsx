@@ -48,7 +48,8 @@ const ins = async (values) => {
       email: values.email,
       instaid: values.instaid,
       paymentDone:true,
-      matchName:values.matchName
+      matchName:values.matchName,
+      utr:values.utr
     };
     await setDoc(userDocRef, userData);
   } catch (err) {
