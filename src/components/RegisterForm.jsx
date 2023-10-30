@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Formik, ErrorMessage } from "formik";
 import { db,st } from "@/src/app/firebase";
-import { ref, uploadBytes } from "firebase/storage";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { object, string } from "yup";
 import UTRex from '@/public/UTRex.jpg'
@@ -20,7 +19,7 @@ import {
 
 import Formi from "@/src/components/Form";
 import Paypage from "../components/Paypage";
-const updateSpots = async () => {
+const updateSpots = async (matchName) => {
   try {
     const spotDocRef = doc(db, "games", matchName);
     const spotsDocSnap = await getDoc(spotDocRef);
@@ -40,18 +39,6 @@ const updateSpots = async () => {
     console.error("Error updating spots:", error);
   }
 };
-const uploadQR = async (pdfData, filename, userUID) => {
-  const storageRef = ref(st, `paymentDone/${userUID}${filename}`);
-  const metadata = {
-    contentType: "image/jpeg",
-  };
-  try {
-    await uploadBytes(storageRef, pdfData, metadata);
-  } catch (err) {
-    console.log("error ", err);
-  }
-};
-
 const ins = async (values) => {
   try {
     const userDocRef = doc(db, "registered", values.username) || null;
@@ -60,7 +47,8 @@ const ins = async (values) => {
       phno: values.phno,
       email: values.email,
       instaid: values.instaid,
-      paymentDone:true
+      paymentDone:true,
+      matchName:values.matchName
     };
     await setDoc(userDocRef, userData);
   } catch (err) {
@@ -81,19 +69,12 @@ export default function RegisterForm({
     username: string().required("Username is required"),
     phno: string().required("Mobile number is required"),
     utr: string().required("UTR number is required"),
-    paySc: string().required(
-      "*Please pay the entry fee and Upload the screen shot"
-    ),
   });
   const onSubmit = async (values, { resetForm }) => {
     try {
       setLoading(true);
-      console.log(values.paySc);
-      const filename = `${values.username}.jpg`;
-      setLoading(false);
-      await uploadQR(values.paySc, filename, matchName);
       await ins(values)
-      await updateSpots()
+      await updateSpots(matchName)
       resetForm()
       router.push("/success")
     } catch (err) {
@@ -119,7 +100,6 @@ export default function RegisterForm({
             phno: "",
             email: "",
             instaid: "",
-            paySc: null,
             paymentDone: false,
             utr:"",
             matchName:matchName
@@ -193,34 +173,6 @@ export default function RegisterForm({
                 </HStack>
                 <Stack mt="20px">
                   <Paypage upiid={upiid} entryfee={entryfee}/>
-                  {/* <Button
-                    as="label"
-                    htmlFor="paySc"
-                    bg="gray.600"
-                    mt="20px"
-                    mb="20px"
-                  >
-                    Submit the Screenshot
-                  </Button>
-                  <input
-                    type="file"
-                    id="paySc"
-                    name="paySc"
-                    style={{ display: "none" }}
-                    onChange={(event) => {
-                      setFieldValue("paySc", event.target.files[0]);
-                    }}
-                  /> */}
-                  {/* <ErrorMessage name="paySc">
-                    {(msg) => (
-                      <div>
-                        <Text color="red.500" fontSize="sm">
-                          {msg}
-                        </Text>
-                      </div>
-                    )}
-                  </ErrorMessage> */}
-                
                   <Formi
                       label="UTR number"
                       id="utr"
@@ -231,7 +183,7 @@ export default function RegisterForm({
                       bg="gray.800"
                   />
                     <Box >
-                    <Img w="80%" m="auto" src={UTRex}/>
+                    <Img w="80%" m="auto" src={UTRex} alt="utr"/>
                     <Text my="20px">Note: Copy the UTR number on the complition of the payment and paste here</Text>
                     </Box>
                 </Stack>
