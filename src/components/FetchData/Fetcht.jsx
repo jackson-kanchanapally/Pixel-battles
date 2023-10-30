@@ -47,18 +47,30 @@ export default function Fetcht() {
     setUtr(event.target.value.toUpperCase());
   };
   React.useEffect(() => {
-   const filterSolo = games?.filter((item) => item.matchname.toUpperCase() === matchna && item.utr.toUpperCase()=== Utr);
-   setSolof(filterSolo);
-  }, [games,Utr,matchna]);
+    const filterSolo = games?.filter(
+      (item) =>
+        item.matchName.toUpperCase() === matchna &&
+        item.utr.toUpperCase() === Utr
+    );
+    setSolof(filterSolo);
+  }, [games, Utr, matchna]);
   return (
     <Box p="50px">
-        <Flex gap="5">
-            <Input type="text" placeholder="Match Name" value={matchna} onChange={handleInputMatch}/>
-            <Input type="text" placeholder="UTR" value={Utr} onChange={handleInputUtr}/>
-           
-        </Flex>
+      <Flex gap="5">
+        <Input
+          type="text"
+          placeholder="Match Name"
+          value={matchna}
+          onChange={handleInputMatch}
+        />
+        <Input
+          type="text"
+          placeholder="UTR"
+          value={Utr}
+          onChange={handleInputUtr}
+        />
+      </Flex>
       <TableContainer>
-      
         <Table variant="simple" marginTop="30px">
           <Thead>
             <Tr>
@@ -69,16 +81,17 @@ export default function Fetcht() {
             </Tr>
           </Thead>
           <Tbody>
-          {
-          solof && solof.map((item,index)=>(
+            {solof &&
+              solof.map((item, index) => (
                 <Tr key={index}>
-                <Td>{item.utr}</Td>
-                <Td>{item.username}</Td>
-                <Td>{item.phno}</Td>
-                <Td bg="green.500" >{item.paymentDone.toString().toUpperCase()}</Td>
-              </Tr>
-            ))
-        }
+                  <Td>{item.utr}</Td>
+                  <Td>{item.username}</Td>
+                  <Td>{item.phno}</Td>
+                  <Td bg="green.500">
+                    {item.paymentDone.toString().toUpperCase()}
+                  </Td>
+                </Tr>
+              ))}
           </Tbody>
         </Table>
       </TableContainer>
