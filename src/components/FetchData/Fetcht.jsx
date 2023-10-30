@@ -49,7 +49,7 @@ export default function Fetcht() {
   React.useEffect(() => {
     const filterSolo = games?.filter(
       (item) =>
-        item.matchName.toUpperCase() === matchna &&
+        item.matchName.toUpperCase().trim() === matchna.trim() &&
         item.utr.toUpperCase() === Utr
     );
     setSolof(filterSolo);
