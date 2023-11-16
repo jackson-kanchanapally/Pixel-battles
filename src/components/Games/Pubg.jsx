@@ -178,7 +178,7 @@ export default function Pubg() {
                     solof.map((game, index) => (
                       <MatchPubg
                         key={index}
-                        image={`/pubg${game.type}.jpg`}
+                        image={`/pubg${game.type.toLowerCase()}.jpg`}
                         alt="hello"
                         matchName={game.matchname}
                         time={game.time}
