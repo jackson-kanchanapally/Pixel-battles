@@ -111,7 +111,7 @@ export default function RegisterForm({
           {({setFieldValue}) => (
             <Form>
               <Formi
-                label="Username"
+                label="Pubg Username"
                 id="username"
                 name="username"
                 type="text"

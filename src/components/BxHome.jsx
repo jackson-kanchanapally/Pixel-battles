@@ -58,7 +58,7 @@ const playNowBtn=()=>{
       <GameSec />
       </Box>
         <Exp/> 
-        <Tab/>
+        {/* <Tab/> */}
         <Quc/>
         {/* <Pp/> */}
       <Footer/>

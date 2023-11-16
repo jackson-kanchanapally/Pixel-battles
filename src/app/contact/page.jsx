@@ -13,7 +13,7 @@ export default function PPpage() {
           Contact Us
         </Text>
       </Box>
-      <Flex w="90vw" direction={['column','row']}>
+      <Flex w="90vw" direction={['column','row']} color="gray.200">
         <Flex justifyContent='center' alignItems='center' direction='column' bg='gray.900' h='200px' borderRadius='15px' w={['90vw','550px']} mb='30px' mr='30px' >
           <HStack align="center" >
             <Text fontSize={['4xl',"5xl"]} color='yellow.400'>
@@ -42,7 +42,7 @@ export default function PPpage() {
           </HStack></Link>
         </Flex>
       </Flex>
-      <Box w="95vw">
+      <Box w="95vw" color="gray.200">
         <Footer />
       </Box>
     </Flex>

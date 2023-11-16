@@ -35,7 +35,7 @@ export default function BxHome() {
             </Heading>
             <Text color={"gray.500"} fontSize="lg" mb={6}>
               Get ready for epic battle! We will send you the Room ID via
-              WhatsApp.
+              Email.
             </Text>
             <Button
               size="lg"
