@@ -34,7 +34,7 @@ export default function BxHome() {
               Congratulations! You&apos;re in for the next Battle!
             </Heading>
             <Text color={"gray.500"} fontSize="lg" mb={6}>
-            you will receive your room I&apos;d details before 30 minutes via Email
+            you will receive your room I&apos;d details before 30 minutes via <Text color="yellow.400" as="b">Email</Text>
             </Text>
             <Text color="yellow.500" fontSize="sm">Check your spam list</Text>
             <Button
