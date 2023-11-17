@@ -43,7 +43,7 @@ export default function Admin() {
       entryfee: val.entryfee,
       time: val.time,
       date: val.date,
-      spots: 100,
+      spots: val.type.toLowerCase()==="tdm"?2:100,
       upiid: val.upiid,
     };
     if (currentUser) {

@@ -76,7 +76,7 @@ export default function MatchPubg({
             {matchName?.toUpperCase()}
           </Text>
           <Box color="gray.400"  w='290px'>
-            <Text fontSize={["9px", "15px"]}>
+            <Text fontSize={["9px", "14px"]}>
               MAP : {mapName}&nbsp;|&nbsp;TIME :
               {time}&nbsp;|&nbsp;{dat}
             </Text>
@@ -137,7 +137,7 @@ export default function MatchPubg({
           color="white"
           mt={['-32px','-30px']}
         >
-         <Button onClick={onOpen}  height={["48px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='white' bg='black' isDisabled={spots==0?true:false}>{spots==0?"Full":"Join"}</Button>
+         <Button onClick={onOpen}  height={["48px", "70px"]} width={["65px", "110px"]} fontSize={['15px','18px']} color='gray.800' bg='gray.300' isDisabled={spots==0?true:false}>{spots==0?"Full":"Join"}</Button>
 
          <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
