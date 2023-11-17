@@ -157,7 +157,7 @@ export default function MatchPubg({
           colorScheme="yellow"
           borderRadius="10px"
           bg="gray.800"
-          value={100-spots}
+          value={spots}
           size={["xs", "sm"]}
         />
         <Flex py="10px" fontSize={["10px","13px"]} color="gray.400">
