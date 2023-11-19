@@ -1,16 +1,10 @@
 "use client";
-import React, { useEffect} from "react";
-import {
-  Box,
-  Flex,
-  Text,
-
-} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { QRCodeCanvas } from "qrcode.react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/src/app/firebase";
 export default function Paypage({ upiid, entryfee }) {
-
   const [games, setGames] = React.useState([]);
   const [players, setPlayers] = React.useState([]);
 
@@ -57,10 +51,11 @@ export default function Paypage({ upiid, entryfee }) {
       level={"H"}
     />
   );
- 
+
   return (
     <Flex bg="gray.900" justify="center" alignContent="center">
       <Flex
+        w="full"
         direction="column"
         bg="gray.200"
         borderRadius="10px"
@@ -68,10 +63,9 @@ export default function Paypage({ upiid, entryfee }) {
         alignItems="center"
       >
         <Box w="200px" height="200px" bg="gray.300" borderRadius="15px">
-      
           {qrcode}
         </Box>
-   
+
         <Text
           textAlign="justify"
           fontSize="12px"
@@ -80,9 +74,7 @@ export default function Paypage({ upiid, entryfee }) {
           mb="20px"
           color="gray.900"
         >
-          NOTE: Take a screenshot of the successful payment. Ensure it includes
-          the transaction ID, sender&apos;s name, and the exact payment amount
-          mentioned, or the payment will be rejected.
+          UPI ID : {upiid}
         </Text>
       </Flex>
     </Flex>

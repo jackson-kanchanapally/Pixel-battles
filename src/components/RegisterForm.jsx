@@ -184,7 +184,7 @@ export default function RegisterForm({
                       bg="gray.800"
                   />
                     <Box >
-                    <Img w="80%" m="auto" src={UTRex} alt="utr"/>
+                    {/* <Img w="80%" m="auto" src={UTRex} alt="utr"/> */}
                     <Text my="20px">Note: Copy the UTR number on the complition of the payment and paste here</Text>
                     </Box>
                 </Stack>
@@ -196,7 +196,7 @@ export default function RegisterForm({
                 _hover={{ bg: "yellow.300" }}
                 w="full"
                 bg="yellow.400"
-                mt="20px"
+                mt="0px"
                 type="submit"
                 isLoading={loading}
               >
