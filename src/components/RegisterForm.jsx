@@ -41,7 +41,7 @@ const updateSpots = async (matchName) => {
 };
 const ins = async (values) => {
   try {
-    const userDocRef = doc(db, "registered", values.username) || null;
+    const userDocRef = doc(db, "registered",  values.matchName, "users", values.username) || null;
     const userData = {
       username: values.username,
       phno: values.phno,

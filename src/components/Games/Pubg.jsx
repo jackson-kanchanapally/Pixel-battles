@@ -74,7 +74,6 @@ export default function Pubg() {
     setSolof(filterSolo);
     const filterSqd = games?.filter((item) => item.type.toUpperCase() === "SQUAD");
     setSqdf(filterSqd);
-  
     const filterTdm = games?.filter((item) => item.type.toUpperCase() === "TDM");
     setTdmf(filterTdm);
   },[games])
