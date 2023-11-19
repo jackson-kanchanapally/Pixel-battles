@@ -77,8 +77,8 @@ export default function MatchPubg({
           </Text>
           <Box color="gray.400"  w='290px'>
             <Text fontSize={["9px", "14px"]}>
-              MAP : {mapName}&nbsp;|&nbsp;TIME :
-              {time}&nbsp;|&nbsp;{dat}
+              MAP : {mapName}&nbsp;|&nbsp;
+             <Text as="b" color="yellow.400">TIME : {time}&nbsp;<Text color="gray.500" as="abbr">|</Text>&nbsp;{dat}</Text>
             </Text>
           </Box>
         </Box>
