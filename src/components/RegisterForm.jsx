@@ -100,7 +100,7 @@ export default function RegisterForm({
             username: "",
             phno: "",
             email: "",
-            instaid: "",
+            // instaid: "",
             paymentDone: false,
             utr:"",
             matchName:matchName
@@ -125,7 +125,7 @@ export default function RegisterForm({
                   Copy your game username and paste it here*
                 </Text>
               </Box>
-              <Formi
+              {/* <Formi
                 label="Instagram ID"
                 id="instaid"
                 name="instaid"
@@ -134,7 +134,7 @@ export default function RegisterForm({
                 mb="10px"
                 color="white"
                 bg="gray.800"
-              />
+              /> */}
               <Formi
                 label="Phone Number"
                 id="phno"
