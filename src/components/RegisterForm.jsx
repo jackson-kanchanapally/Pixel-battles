@@ -163,7 +163,7 @@ export default function RegisterForm({
                   </Box>
                   <Box>
                     <Heading fontSize="14px">
-                      Entry Fee : &#8377;{entryfee}
+                    Entry Fee: {entryfee != 0 ? `\u20B9 ${entryfee}` : "Free Match"}
                     </Heading>
                   </Box>
                 </HStack>
@@ -172,7 +172,7 @@ export default function RegisterForm({
                     <Heading fontSize="13.5px">Map : {mapName}</Heading>
                   </Box>
                 </HStack>
-                <Stack mt="20px">
+              {entryfee!=0?  <Stack mt="20px">
                   <Paypage upiid={upiid} entryfee={entryfee}/>
                   <Formi
                       label="UTR number"
@@ -187,7 +187,7 @@ export default function RegisterForm({
                     {/* <Img w="80%" m="auto" src={UTRex} alt="utr"/> */}
                     <Text my="20px">Note: Copy the UTR number on the complition of the payment and paste here</Text>
                     </Box>
-                </Stack>
+                </Stack>:""}
               </Stack>
               <Box m="auto" mt="10px" color="white">
                 {/* Contest BGMI Solo #1 will start on */}

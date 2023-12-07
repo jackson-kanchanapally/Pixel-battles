@@ -172,7 +172,7 @@ export default function Pubg() {
             <TabPanels>
               <TabPanel>
       
-                {games?
+                {solof!=[]?
                   (
                     solof.map((game, index) => (
                       <MatchPubg
@@ -197,7 +197,7 @@ export default function Pubg() {
                   )}
               </TabPanel>
               <TabPanel>
-                {sqdf ?
+                {sqdf!=null ?
                   sqdf.map((game, index) => (
                     <MatchPubg
                       key={index}
@@ -222,7 +222,7 @@ export default function Pubg() {
                   )}
               </TabPanel>
               <TabPanel>
-                {tdmf ?
+                {tdmf!=[] ?
                   tdmf.map((game, index) => (
                     <MatchPubg
                       key={index}
